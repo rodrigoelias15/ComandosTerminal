@@ -1,0 +1,357 @@
+mkdir nome_pasta (cria uma pasta no diretorio atual)
+
+rmdir nome_pasta (remove pastas vazias)
+
+rm nome_arquivo (remove apenas arquivos, rm -r remove pastas e arquivos de forma recursiva, sem pedir confirmação)
+
+rm !(nome_arquivo/nome_diretorio/*.tipoarquivo) (remove arquivos ou diretórios, exceto oque está dentro dos parênteses)
+
+!! (cola e executa ultima linha de comando)
+
+touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outros diretorios, basta digitar o nome do diretorio/nome_arquivo)
+
+cat nome_arquivo (exibe o conteudo em texto do arquivo)
+
+mv nome_arquivo nome_diretorio_destino OU mv nome_arquivo novo_nome_arquivo (serve para renomear arquivos ou mover arquivos e diretorios, pode ser acompanhado de -i, pedindo confirmação caso exista arquivo ou pasta de mesmo nome no diretorio destino, ou -b que faz copia de segurança se arquivo ou pasta ja existir no destino)
+
+cp -r nome_arquivo/nome_pasta nome_nova_copia (copia arquivo ou pasta)
+
+ln -rs nome_arquivo/nome_diretorio "nome_atalho" (cria link simbólico ou atalho de arquivos/diretorios. Obs: se usar apenas a flag -s, crie links de um arquivo/diretorio para o diretorio atual do terminal, caso contrário o link quebra, no entanto se usarmos -rs podemos criar atalhos para qualquer diretório, exemplo: ln -rs "/home/rodrigo/Komodo-IDE-12.0.1/bin/komodo" /usr/local/bin/komodo)
+
+unlink nome_atalho (deleta atalho de forma segura, também deleta arquivos comuns)
+
+cd endereco_diretorio (muda para diretorio especificado)
+
+cd .. (retorna um nível acima do diretório atual)
+
+pwd (exibe caminho do diretorio)
+
+ls (exibe arquivos e pastas do diretorio, exemplo: ls -al, exibe todos os arquivos (inclusive ocultos) do diretório atual e detalhes, como níveis de permissão (usuario (dono), grupo do usuário dono e outros usuarios, respectivamente), nome do usuário, nome do grupo, data de modificação e nome do arquivo/pasta respecivamente)
+
+namei -lx nome_diretorio (exibe permissões do diretorio)
+
+nome_aplicativo --version (exibe versão do aplicativo)
+
+sudo snap remove nome_aplicativo (remove aplicativos instalados por snap, existem outros comandos para o snap)
+
+apt-cache opcao comando (permite buscar informações no cache do apt (Advanced Packaging Tool))
+
+apt show nome_aplicativo (retorna informações detalhadas do aplicativo, instalado ou não)
+
+apt list nome_aplicativo (exibe informações sobre aplicativos na branch remota e se está instalado ou não)
+
+apt search nome_aplicativo (busca aplicativo no repositorio remoto, é usado frequentemente quando não encontramos o repositorio de um aplicativo)
+
+apt depends nome_aplicativo (exibe quais pacotes o aplicativo especificado depende)
+
+sudo add-apt-repository ppa: url_diretorio_pacotes
+
+sudo apt install nome_aplicativo
+
+sudo apt --fix-broken install (corrige problemas de instalação de pacotes do repositorio do linux, como dependencias desencontradas)
+
+sudo apt update (baixa pacotes atualizados sem instalá-los)
+
+sudo apt-get upgrade (instala atualizações dos pacotes baixados) ou sudo apt-get upgrade <app> (instala atualizações do pacote especifico)
+
+sudo apt-mark hold <nome_aplicativo> (impede que aplicativo continue sendo atualizado)
+
+apt-mark showhold (lista de aplicativos que estão marcados para não serem atualizados)
+
+sudo apt-mark unhold nome_aplicativo (volta a atualizar normalmente o aplicativo)
+
+sudo apt autoremove && sudo apt autoclean (autoremove desinstala bibliotecas que precisaram ser executadas poucas vezes para a execucao de outros programas e já não são mais necessárias, autoclean para remover arquivos .deb inúteis mas ainda mantem algum cache caso precise baixar de novo ser mais rápido)
+
+sudo dpkg -i <arquivo.deb> ou sudo dpkg -i <*.deb> (para instalar todos arquivos .deb na mesma pasta)
+
+nome_pacote/nome_aplicativo --help (ajuda do linux referente a algum comando ou programa)
+
+man nome_aplicativo (manual do aplicativo)
+
+wc nome_arquivo (exibe número de linhas, palavras e caracteres do arquivo)
+
+tail nome_arquivo (exibe últimas 10 linhas de um arquivo, para exibir número específico de linhas digite tail -n nome_arquivo (-n para número de linhas))
+
+tee nome_arquivo (grava saída de um comando em um  ou mais arquivos, exemplo: ls | tee arquivo.txt, saída do comando ls é gravada no arquivo de texto)
+
+sed (aplicativo GNU para edição de textos, os arquivos são editados porém não ficam salvos sem a flag -i). Alguns exemplos:
+sed -i 's/palavra_para_modificar/nova_palavra/' arquivo_Texto (comando s para substituir primeiras ocorrencias em todas as linhas, e -i para salvar arquivo)
+sed 's/palavra_para_modificar/nova_palavra/g' arquivo_Texto (comando g (--global) para substituir todas as ocorrencias)
+sed '1,3 s/palavra_para_modificar/nova_palavra/' arquivo_Texto (substitui ocorrencias da linha 1 à 3)
+sed 's/^/expressao' arquivo_Texto (adiciona nova expressão no início de cada linha)
+sed 's/$/expressao' arquivo_Texto (adiciona nova expressão no final de cada linha)
+
+variavel="conteudo" (sem espaços entre "=" e o conteudo, cria variaveis no terminal como no exemplo:
+caminho="/home/rodrigo/Downloads"
+Nesse caso a variável $caminho recebe o caminho especificado, mas ela é temporária e só existe localmente no bash, para se transformar em variável local permanente, acesse o arquivo /etc/bash.bashrc e digite na ultima linha do arquivo: export caminho="/home/rodrigo/Downloads")
+export PATH="/home/rodrigo/Komodo-IDE-12.0.1/bin:$PATH" (exemplo de como adicionar aplicativo à variavel ambiente do sistema usando export)
+
+variavel=`comando` (insere a saída do comando na variável, para isto basta colocá-lo entre crases. Outra forma de escrever é usando o subshell desta forma: variavel=$(comando))
+
+PATH=$(echo "$PATH" | sed 's/:\/home\/usuario\/bin//') (remove caminho da variável PATH usando subshell, para isso insere-se a saida do comando na variável. Aplicativo sed não reconhece "/", por isso coloca-se uma barra invertida antes para reconhecer que "/" não é comando. Neste caso estamos substituindo "/home/usuario/bin" por vazio)
+
+env | grep variavel (busca variáveis ambiente salvas)
+
+OBS: Olhar arquivo ShellScript.txt para se aprofundar mais sobre scripts shell, variáveis, etc.
+
+alias nome_apelido="comando" (salva atalhos ou apelidos para comandos do terminal, mas salva temporariamente. Para salvar permanentemente basta acessar o arquivo ~/.bashrc e digitar na ultima linha: alias nome_apelido = "comando")
+
+telnet endereco_ip num_porta (serve para realizar conexões remotas com outras máquinas)
+
+ifconfig (exibe informações sobre interface de rede)
+
+netstat -atunp (A opção -a permite a visualização de todas as conexões de rede e o número de identificação do processo. O nome do programa associado a cada conexão é exibido pela opção -p, as opções -t e -u indicam que devem ser exibidas somente conexões TCP e UDP, respectivamente. Por último, a opção -n desabilita a conversão de endereços IP em nomes. Maiores informações sobre as opções e o funcionamento do netstat podem ser obtidas em sua man page. Quando a porta estiver com status LISTEN significa que está aberta para receber novas conexões).
+
+ip address (verifica ip da máquina)
+
+ip route (rotas disponíveis)
+
+curl endereco_url (abreviação de Client URL, serve para verificar a conectividade da URL)
+
+curl -O endereco_url (baixa arquivo com mesmo nome que esta na URL)
+
+curl -o nome_arquivo endereco_url (baixa arquivo da URL com nome especificado)
+
+sudo ufw app list (lista as aplicações protegidas pelo firewall)
+
+sudo ufw app info "Apache Full" (informações sobre o perfil Apache Full do firewall)
+
+wget endereco_url (usada para recuperar conteúdos e arquivos de vários servidores na internet)
+
+man nome_aplicativo/comando (manual do aplicativo ou comando)
+
+locate -i -b nome_pacote (Localiza arquivos do programa, -i significa ignore-case)
+
+sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; "usuario_root" seria novo usuario e dono, seguido do novo grupo "grupo_usuario_root"). Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo
+
+chmod +x nome_arquivo (torna arquivo executável, ao usar "ls" para listar arquivos do diretório, arquivos executáveis são mostrados em destaque)
+Obs: ENTENDER MAIS SOBRE USUARIOS E GRUPOS
+
+sudo chmod -R g+rwx nome_diretorio/nome_arquivo (grupo do dono (g) recebendo permissão de leitura (read - r),gravação (write - w) e execução (execute - x). 
+Para remover permissão: chmod -R g-rwx
+Para alterar permissão do dono (usuário), usamos "u"; para outros usuários, "o" (others) e para todos usuários (usuário dono, grupo do dono e outros), "a" (all)
+
+chmod 765 (usuário dono, grupo do dono e outros usuarios respectivamente)
+1 = executar (x)
+2 = gravar (w)
+4 = ler (r)
+
+grep "texto_para_procurar" nome_diretorio/nome_arquivo/* (pode ter variações como -R, -i (ignore-case), entre outras. Pode-se salvar a saida num arquivo, exemplo:
+grep "texto_para_procurar" nome_diretorio/nome_arquivo/* > saida.txt)
+Outra variação seria:  ls | grep "texto_para_procurar" nome_diretorio/nome_arquivo/* para procurar um arquivo
+
+xdg-open nome_diretorio (abre diretorios ou sites no navegador padrão (acrescente http ou https))
+
+top (fila de processos em execução)
+
+ps (processos em execução, inclusive os que estão em background. Para mais detalhes, execute: ps -aux)
+
+free (retorna consumo de memoria, para valores em MB utilize comando free -m)
+
+kill nome_aplicativo (mata o processo em execução pelo PID)
+
+killall nome_aplicativo (mata todos os processos referentes àquele aplicativo)
+
+inxi (retorna dados do hardware do pc, para mais detalhes use inxi -F)
+
+echo "string" > nome_arquivo (adiciona string no arquivo substituindo o conteudo existente)
+
+echo "string" >> nome_arquivo (adiciona string no arquivo em uma nova linha)
+
+echo "$?" (retorna status do último comando utilizado)
+
+ls > nome_arquivo (outro exemplo de que as informações do comando podem ser salvas em um arquivo)
+
+wc < nome_arquivo (redirecionamento de entrada, quando as informações do arquivo são passadas para o comando)
+
+wc << comando_fim_arquivo (redirecionamento de entrada, podendo-se adicionar linhas de comando em forma de texto, geralmente para fim de arquivo usamos eof (end of file), escrito na última linha do comando)
+
+sudo a2enmod php5.6 (ativa php)
+
+sudo a2dismod php7.2 (desativa o php)
+
+whereis nome_aplicativo (retorna todos os diretorios de instalação do aplicativo)
+
+which nome_aplicativo (retorna diretorio principal da aplicação)
+
+zip -r novo_arquivo.zip arquivo_para_compactar/diretorio_para_compactar (compacta arquivos ou pastas para .zip) OU zip -r novo_arquivo.zip arquivo_para_compactar/diretorio_para_compactar -x "nome_arquivo" (cria arquivos .zip mas ignora arquivos/diretórios especificados com uso de -x (exclude))
+
+unzip nome_arquivo.zip -d diretorio_destino (descompacta arquivos .zip para o diretorio especificado, se acaso o diretório não existir, ele será criado)
+
+tar -cvzf novo_arquivo.tar.gz arquivo_para_compactar/diretorio_para_compactar (cria arquivo .tar.gz (-c=create, -z=gzip, -f=file e -v=verbose (imprime detalhes do processo)). Obs: Arquivos desse formato são menores que .zip, porém compatibilidade é limitada aos sistemas Linux)
+
+tar -xvzf nome_arquivo.tar.gz -C diretorio_destino (extrai arquivos .tar ou .tar.gz para diretório escolhido (-x=execute, -f=file, -z=gzip e -v=verbose (imprime detalhes do processo)))
+
+zcat nome_arquivo.gz (descompacta arquivos .gz)
+
+history (histório de comandos do terminal, history -c limpa o histórico)
+
+neofetch (exibe informações e versão da distro linux)
+
+id (exibe id de usuários)
+
+uname (visualizar informações do sistema, exemplo: uname -r exibe versão do kernel)
+
+sudo passwd root (desbloqueia e cria nova senha para usuario root)
+
+sudo nano /etc/passwd (exibe de maneira detalhada id e outras informações de usuarios)
+
+bc (calculadora do bash que possui linguagem de programação. Obs: A variavel scale determina a precisão de casas decimais para cada resultado de divisão, como quando queremos 2 casas decimais: scale=2
+O comando também pode ser usado dessa forma, sendo a variável opcional (apenas para divisões): echo "variavel; operacao_matematica" | bc)
+
+less (geralmente usado em conjunto com outros comandos, por exemplo ls | less, ele permite exibir a saída do primeiro comando como se estivesse em um programa de texto, permitindo navegar pelo conteúdo usando o teclado, a saída do comando não fica registrada no terminal)
+
+alsamixer (programa de configuração das saídas de som do sistema)
+
+
+/============ Partições, dispositivos e sistema de arquivos =============/
+
+lsblk (identifica caminho dos dispositivos)
+
+findmnt (lista dispositivos montados)
+
+blkid (exibe informação de partições, mesmo que não estejam montados)
+
+sudo fdisk -l (exibe partições montadas)
+
+sudo fdisk nome_dispositivo (criar nova partição, por exemplo fdisk /dev/sdb)
+
+mount (comando lista todo o conteúdo do arquivo /etc/mtab. Porém ele também é usado para montar um dispositivo da seguinte forma:
+mount -t tipo_sistema_arquivos nome_dispositivo local_montagem, ex: mount -t vfat /dev/sdb1 /media/teste (-t é abreviação de --type ou tipo de sistema de arquivos do dispositivo que será montado). Outro exemplo:
+sudo mount -t ntfs -o uid=rodrigo,gid=rodrigo /dev/sda1 /media/nome_pasta/)
+
+sudo umount nome_dispositivo (desmonta sistema de arquivos de um dispositivo, ex: sudo umount /dev/sdb1)
+
+sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) que formata pendrive para tipo de arquivo ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
+
+sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
+
+dd if=nome_arquivo.iso of=/dev/sdb status=progress && sync (comando é um conversor de arquivos e também grava imagem ISO em CD/DVD/pendrive. if: arquivo origem, stdIN (entrada de dados); of: arquivo destino, stdOUT (saída de dados) e sync (garante que os dados serão copiados imediatamente para mídia))
+
+sudo eject nome_dispositivo (ejetar dispositivo, por exemplo eject /dev/sdc)
+
+sudo ntfsfix nome_dispositivo (serve para corrigir dispositivos ntfs com o app ntfs-3g)
+
+df -h (df (disk free) é usado para ver espaço de armazenamento nas unidades, use -h (significa --human-readable) para deixar valores mais compreensíveis)
+
+Para deixar uma partição montada automaticamente, faça:
+$ sudo mkdir /media/nome_pasta (cria pasta da partição dentro da pasta /media)
+$ id (lista id de usuarios, grupos, etc)
+$ blkid (lista partições, pegaremos o nome da partição (apenas para comentário), o tipo de sistema de arquivos da partição e o valor de UUID (universally unique id), exemplo: /dev/sda1, ntfs e 6E2FD13B75546EF3)
+Em seguida execute: 
+$ sudo vim /etc/fstab
+Abaixo foram deixadas as colunas (file system, mount point, etc) para que saiba com quais atributos o arquivo trabalha, não precisa repeti-las, porém as demais linhas podem servir de base para escrever os valores coletados em blkid e id da sequinte forma: 
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+.
+.
+.
+#comentario para particao montada
+valor_UUID /media/nome_pasta tipo_sistema_arquivos defaults,uid=id_usuario 0 0
+
+Exemplo do que deve ser adicionado ao texto:
+# partição HD do windows
+UUID="6E2FD13B75546EF3" /media/windowsArq ntfs defaults,uid=1000 0 0
+
+Acrescentando uid=id_usuario ao /etc/fstab, permite que ao deletar um arquivo/pasta a partição crie uma lixeira automaticamente (.Trash-<id_usuario>, por exemplo .Trash-1000/), para que nada seja deletado permanentemente, ao mesmo tempo que torna o usuario passado como id no /etc/fstab seja proprietario da partição, dispensando o comando chown.
+
+/=========================================================/
+
+
+/============== Curiosidades ================/
+
+CTRL + R = buscar comando usado no terminal
+
+CTRL + U = apaga do local do cursor até inicio da linha
+
+stdout, stdin e stderr (fluxo de dados do Unix. Representa a saida de dados, entrada de dados e exibição de erro respectivamente)
+
+Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
+
+sudo su (entra em modo root no diretorio atual)
+
+sudo -i OU su - (também entram em modo root, "sudo -" exige senha)
+
+ffmpeg -ss 0 -t 5 -i audio-original.mp3 audio-cortado.mp3 (cortar mp3)
+
+sudo shutdown -h "tempo em minutos" ou sudo shutdown -h "15:30"(comando para desligar pc automaticamente)
+
+/etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem)
+
+No arquivo /etc/fstab defaults significa: rw, suid, dev, exec, auto, nouser, and async.
+
+comando1 && comando2 (&& separa comandos e os executa um de cada vez, o comando2 só é executado se o comando1 for bem sucedido, ex: mkdir 'pasta' && cd pasta && touch arquivo. & (colocar comando em segundo plano (background)) e ; (final de linha) também separam comandos, eles são executados independentemente se tiveram êxito, ex: cd /home/$USER/Documentos; ls -l. Se & estiver no fim da linha, o terminal é liberado para executar próximo comando, ex: firefox &. Obs: Para fechar terminal sem fechar o programa, digite exit para sair)
+
+/=======================================/
+
+
+/============== WSL ===============/
+
+Abrir cmd como administrador e digite os comandos: 
+ $ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+ $ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+Reinicie o pc
+Instale a distro de sua escolha no Microsoft Store
+Acesse o link https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi para baixar o pacote de atualização do kernel do Linux
+Retorne ao cmd como administrador e digite o seguinte comando para verificar a distro instalada e versão do WSL:
+ $ wsl -l -v (-l lista distribuições e -v é abreviação de --verbose)
+Digite o seguinte comando para tornar o WSL 2 a versão padrão para futuras distribuições:
+ $ wsl --set-default-version 2
+Agora digite o seguinte comando para alterar a versão atual da distribuição:
+ $ wsl --set-version <distro_name> 2 (por exemplo wsl --set-version Ubuntu-20.04 2)
+Para definir a distro atual como a padrão, digite:
+ $ wsl --set-default <distro_name>
+Caso queira retornar para WSL 1, digite:
+ $ wsl --set-version
+
+Para abrir pasta raiz da distro digite no terminal bash:
+explorer.exe .
+
+Para encontrar os arquivos do Linux através do explorer do windows, basta escrever na barra de endereços:
+\\wsl$
+
+/==================================/
+
+
+/============ Problemas ===========/
+
+Problema: Comando sudo não funciona, usuario não se encontra no sudoers. 
+Solução: acessar arquivo /etc/sudoers como usuario root e acrescentar no arquivo a linha 
+nome_usuario ALL=(ALL:ALL) ALL
+
+Problema: apt-cdrom
+Solução: Acessar arquivo /etc/apt/sources.list e comentar a linha que menciona apt-cdrom
+
+Problema: Reconhecer som em todas as saídas.
+Solução: Digitar no terminal: Alsamixer
+Depois configurar o programa
+
+Para resolver problema read-only na partição do windows, basta entrar nas opções de energia do windows e desativar "inicialização rápida"
+
+* programa não abre 1: /var has 'other' write 40777
+solution: sudo chmod -R 755 /var (diretorio que deu erro)
+
+* programa não abre 2: var not root-owned 1000:0
+solution: sudo chown root:root /var (diretorio do erro)
+
+* Reparar boot:
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt update
+sudo apt install boot-repair
+Abrir Boot Repair e quando processo tiver acabado executar:
+sudo update-grub
+
+* instalação do grub:
+sudo mount -t <particao do linux> /mnt
+sudo grub-install --root-directory=/mnt nome_dispotivo_linux. OBS: Também pode ser instalado com boot repair.
+
+Windows:
+
+cmd > chkdsk X: /f /r (corrige erros na unidade X (pode ser alterado), /f corrige erros do disco, /r localiza setores defeituosos no disco rigido e tenta repara-los, isso pode deixar processo mais demorado, eh opcional)
+
+cmd > bootrec.exe /FixBoot
+cmd > bootrec.exe /FixMbr
+Se aparecer acesso negado, digite:
+bootsect /nt60 all
+Repara inicializacao do Windows
+
+/===============================/

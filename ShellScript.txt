@@ -1,0 +1,244 @@
+bash (cria um novo bash dentro do terminal atual)
+
+unset (deleta variavel criada localmente)
+
+variavel="conteudo" (cria variavel no bash local, sem espaços entre o conteudo e sinal de "=", para que o linux não interprete como um comando)
+
+variavel=`comando` (insere a saída do comando na variável, basta colocá-lo entre crases. Outra forma de escrever é usando o subshell dessa forma: variavel=$(comando))
+
+echo $variavel (exibe conteúdo da variável)
+
+export variavel (variavel global e temporaria, é reconhecida em qualquer terminal e bash)
+
+variavel_array=(elem1 elem2 elem3) (criação de array com respectivos elementos, separados por espaço)
+
+variavel_array[i]="conteudo" (substitui o elemento de índice "i" pelo novo conteudo)
+
+echo ${variavel_array[*]} (imprime todos os elementos do array)
+
+echo ${variavel_array[i]} (imprime elemento de índice "i" do array)
+
+unset ${variavel_array[i]} (deleta elemento de indice "i")
+
+alias apelido_criado="comando_do_linux" (comando para criar apelidos no bash, sem espaços entre o conteudo do apelido e sinal de "=")
+
+unalias apelido_criado (apaga apelido criado)
+
+nome_funcao(){comandos_da_funcao} (cria função dentro do bash, para executá-la basta escrever seu nome. Comando typeset -f lista todas as funções do bash)
+
+echo mensagem (comando para saída de mensagens, ex: echo -n $PATH, exibe conteúdo da variável PATH sem quebrar linha)
+
+variavel=$[num1 * num2] (operações matemáticas com números inteiros. Podem ser usado diferentes operadores como *, /, +, -. Ex: var2=$[$var1 * (5 - 3)]
+
+read valor_digitado (comando usado para entrada de valores pelo teclado, ex: read -p "Digite valor para variavel: " valor_digitado, valor_digitado precisa de espaço depois das aspas duplas)
+
+wc < nome_arquivo (redirecionamento de entrada, quando as informações do arquivo são passadas para o comando)
+
+wc << comando_fim_arquivo (redirecionamento de entrada, podendo-se adicionar linhas de comando em forma de texto, geralmente para fim de arquivo usamos eof (end of file), escrito na última linha do comando)
+
+
+//========= Script Propriamente Dito ===========//
+
+Deve-se começar todo script com #!/bin/bash (# (sustenido) é usado para comentários, mas a primeira linha é uma exceção porque #! serve para indicar qual shell ou interpretador vai executar o script)
+
+Para operações matemáticas maiores e complexas, podemos por exemplo escrever este script:
+---------------------------------------------
+#!/bin/bash
+var1=5
+var2=10
+resultado=`bc << eof
+a=$var1*$var2
+a^2
+eof`
+
+echo "Resultado da operação é $resultado"
+
+OU
+
+#!/bin/bash
+var1=5
+var2=10
+resultado=$(bc << eof
+a=$var1*$var2
+a^2
+eof
+)   #Fechamento de parenteses feito na linha abaixo do "eof"
+    #para não atrapalhar resultado do redirecionamento de entrada
+
+echo "Resultado da operação é $resultado"
+---------------------------------------------
+
+
+If-then-else e if-aninhado que verifica se comandos tiveram êxito, exemplo:
+----------------------------------------------------------------
+if comando
+then 
+    echo "Comando obteve saída igual a 0, ou seja, verdadeiro"
+else 
+    echo "Comando obteve saída igual a 1, ou seja, falso"
+fi
+
+OU
+
+if comando
+then 
+  proposicao
+elif comando2
+  proposicao
+elif comando3
+  proposicao
+else 
+  proposicao
+fi
+------------------------------------------------------------------
+
+
+If-then-else e if-aninhado para comparações do tipo arquivo, strings e numérica. Para isso usamos o comando test (if test condicao) ou ocultando-o com colchetes duplos (if [[ condicao ]]), pois estes possuem mais recursos e são mais flexíveis que colchete simples. Neste caso é necessário um espaço entre if, condição e colchetes. Para verificar mais de uma condição, pode-se acrescentar operadores como AND ou OR (if [[ condicao ]] && [[ condicao ]]).
+Para comparações de números inteiros, usamos os operadores:
+
+-eq (equal)
+-ne (not equal)
+-gt (greater then)
+-ge (greater or equal then)
+-lt (less then)
+-le (less or equal then)
+
+Exemplos de comparações numéricas:
+-----------------------------------------
+if test $var1 -le 30
+then 
+    echo "$var1 é menor ou igual a 30"
+else 
+    echo "$var1 é maior que 30"
+fi
+
+OU
+
+if [[ $var1 -le 30 ]]
+then 
+    echo "$var1 é menor ou igual a 30"
+else 
+    echo "$var1 é maior que 30"
+fi
+----------------------------------------
+
+
+Para comparações de strings, usamos comparadores convencionais como <, >, = ou !=. Para comparação de strings como maior que ou menor que, o bash considera a ordem alfabética das strings, por exemplo: Fabio > Rodrigo (F vem antes que R em ordem alfabética)
+
+Exemplos de comparações de strings:
+-----------------------------------------
+nome1="Rodrigo"
+nome2="Elias"
+
+if [[ $nome1 < $nome2 ]]; then
+    echo "$nome1 vem antes de $nome2 em ordem alfabética"
+elif [[ $nome1 > $nome2 ]]; then
+    echo "$nome1 vem depois de $nome2 em ordem alfabética"
+else
+    echo "Strings are equal"
+fi
+
+OU
+
+nome=rodrigo
+if [[ $USER != rodrigo ]]
+then
+  echo "Olá $nome"
+else
+  echo "Nome incorreto"
+fi
+----------------------------------------
+
+
+Podemos usar os seguintes operadores pré-definidos dentro das comparações if:
+
+-e (verifica existência de arquivo ou diretório)
+-d (verifica se é diretório)
+-f (verifica se é arquivo e se existe)
+-z (verifica se variável ou string está vazia)
+-r (verifica se arquivo pode ser lido)
+-w (verifica se arquivo pode ser escrito)
+-x (verifica se arquivo pode ser executado)
+
+
+Para estrutura "for" segue a seguinte estrutura:
+
+for item in `comando`
+do
+  proposicao
+done
+
+OU
+
+for item in variavel_vetor
+do
+  proposicao
+done
+
+OU
+
+for item in nome_diretorio/nome_arquivo
+do
+  proposicao
+done
+
+OU
+
+for (( i=numero_inteiro; condicao; incremento/decremento ))
+do
+  proposicao
+done
+
+
+Exemplos com for:
+--------------------------------
+vetor=(1 2 3)
+i=1
+for elemento in ${vetor[*]}
+do
+  echo "Imprime elemento $i: $elemento"
+  i=$[i+1]
+done
+---------------------------------
+i=1
+for elemento in /home/rodrigo/*
+do
+  echo "Imprime elemento $i: $elemento" #imprime nome de todos elementos do diretorio
+  i=$[i+1]
+done
+---------------------------------
+for (( i=1; i<=15; i++ ))
+do
+  echo "Numero: $i"
+done
+----------------------------------
+
+
+Segue exemplo para estrutura while:
+--------------------------------------------
+var1=5
+while [[ var1 -ne 0 ]]
+do
+  var1=$[var1-1]
+  echo -n "$var1 "
+done
+echo "" #para quebrar linha no fim do while
+---------------------------------------------
+
+
+//=========================================//
+
+
+//============= Curiosidades =============//
+
+Para inicializar scripts com o sistema, basta colocar os scripts no diretório /etc/profile.d/, o arquivo de configuração /etc/profile executa todos os arquivos .sh desse diretório na inicialização do sistema.
+
+Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente, basta que sejam escritas no arquivo de configuração local ~/.bashrc, ele é inicializado toda vez que o bash é carregado interativamente (quando terminal é aberto) e faz referência ao usuário atual (com ou sem login).
+Para salvar aliases, funções e variáveis permanentemente de modo geral, basta escrevê-las no arquivo de configuração global /etc/bash.bashrc
+
+";" significa fim de linha
+
+Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH, como /usr/local/bin/ ou acrescentar o diretório do arquivo na variável PATH
+
+//======================================//
+
