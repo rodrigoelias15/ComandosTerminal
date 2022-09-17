@@ -64,15 +64,15 @@ sudo apt autoremove && sudo apt autoclean (autoremove desinstala bibliotecas que
 
 sudo dpkg -i <arquivo.deb> ou sudo dpkg -i <*.deb> (para instalar todos arquivos .deb na mesma pasta)
 
-nome_pacote/nome_aplicativo --help (ajuda do linux referente a algum comando ou programa)
+nome_aplicativo --help (ajuda do linux referente a algum comando ou programa)
 
 man nome_aplicativo (manual do aplicativo)
 
-wc nome_arquivo (exibe número de linhas, palavras e caracteres do arquivo)
+wc nome_arquivo (exibe número de linhas, palavras e caracteres do arquivo (contando com espaços) respectivamente)
 
 tail nome_arquivo (exibe últimas 10 linhas de um arquivo, para exibir número específico de linhas digite tail -n nome_arquivo (-n para número de linhas))
 
-tee nome_arquivo (grava saída de um comando em um  ou mais arquivos, exemplo: ls | tee arquivo.txt, saída do comando ls é gravada no arquivo de texto)
+tee nome_arquivo (grava saída de um comando em um ou mais arquivos, exemplo: ls | tee arquivo.txt, saída do comando ls é gravada no arquivo de texto)
 
 sed (aplicativo GNU para edição de textos, os arquivos são editados porém não ficam salvos sem a flag -i). Alguns exemplos:
 sed -i 's/palavra_para_modificar/nova_palavra/' arquivo_Texto (comando s para substituir primeiras ocorrencias em todas as linhas, e -i para salvar arquivo)
@@ -90,7 +90,7 @@ variavel=`comando` (insere a saída do comando na variável, para isto basta col
 
 PATH=$(echo "$PATH" | sed 's/:\/home\/usuario\/bin//') (remove caminho da variável PATH usando subshell, para isso insere-se a saida do comando na variável. Aplicativo sed não reconhece "/", por isso coloca-se uma barra invertida antes para reconhecer que "/" não é comando. Neste caso estamos substituindo "/home/usuario/bin" por vazio)
 
-env | grep variavel (busca variáveis ambiente salvas)
+env | grep "variavel" (busca variáveis ambiente salvas)
 
 OBS: Olhar arquivo ShellScript.txt para se aprofundar mais sobre scripts shell, variáveis, etc.
 
@@ -120,7 +120,9 @@ wget endereco_url (usada para recuperar conteúdos e arquivos de vários servido
 
 man nome_aplicativo/comando (manual do aplicativo ou comando)
 
-locate -i -b nome_pacote (Localiza arquivos do programa, -i significa ignore-case)
+find diretorio_pesquisa -iname "termo_pesquisa" (faz pesquisa em determinado diretorio, flag -name pesquisa por nome, -i ignora caixa alta/baixa. Comando permite fazer buscas além do nome)
+
+locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos)
 
 sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; "usuario_root" seria novo usuario e dono, seguido do novo grupo "grupo_usuario_root"). Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo
 
@@ -136,9 +138,9 @@ chmod 765 (usuário dono, grupo do dono e outros usuarios respectivamente)
 2 = gravar (w)
 4 = ler (r)
 
-grep "texto_para_procurar" nome_diretorio/nome_arquivo/* (pode ter variações como -R, -i (ignore-case), entre outras. Pode-se salvar a saida num arquivo, exemplo:
-grep "texto_para_procurar" nome_diretorio/nome_arquivo/* > saida.txt)
-Outra variação seria:  ls | grep "texto_para_procurar" nome_diretorio/nome_arquivo/* para procurar um arquivo
+grep "termo_pesquisa" nome_diretorio/nome_arquivo/* (realiza busca por padrões dentro de arquivos de texto. Podemos também salvar a saida do comando dentro de um arquivo, exemplo:
+grep -i "termo_pesquisa" nome_diretorio/nome_arquivo/* > saida.txt)
+Usando grep junto com comando ls podemos pesquisar pelo nome de arquivos, exemplo:  ls | grep "termo_pesquisa" nome_diretorio/nome_arquivo/*
 
 xdg-open nome_diretorio (abre diretorios ou sites no navegador padrão (acrescente http ou https))
 
