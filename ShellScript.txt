@@ -122,6 +122,46 @@ else
 fi
 ----------------------------------------
 
+Podemos usar os seguintes operadores pré-definidos dentro das comparações if:
+
+-e (verifica existência de arquivo ou diretório)
+-d (verifica se é diretório e se existe)
+-f (verifica se é arquivo e se existe)
+-z (verifica se variável ou string está vazia)
+-r (verifica se arquivo pode ser lido)
+-w (verifica se arquivo pode ser escrito)
+-x (verifica se arquivo pode ser executado)
+
+Exemplos:
+----------------------------------------
+arquivo="/usr/local/bin/node"
+if [[ ! -f $arquivo ]]
+then
+    echo "$arquivo não existe!"
+else
+    echo "$arquivo existe!"
+fi
+
+OU
+
+for item in ./* 
+do
+    if [[ -d $item ]]
+    then
+        aux=$(ls $item)         #variavel auxiliar para armazenar saida do comando ls
+        if [[ -z $aux ]]; then  #verifica se conteudo da variavel esta vazia
+            echo "$item é pasta e está vazia!"
+            rm -r $item
+            echo "$item apagada com sucesso!"
+        else
+            echo "$item é pasta e contem arquivos!"
+        fi
+    else
+        echo "$item não é pasta"
+    fi
+done
+
+----------------------------------------
 
 Para comparações de strings, usamos comparadores convencionais como <, >, = ou !=. Para comparação de strings como maior que ou menor que, o bash considera a ordem alfabética das strings, por exemplo: Fabio > Rodrigo (F vem antes que R em ordem alfabética)
 
@@ -149,21 +189,16 @@ else
 fi
 ----------------------------------------
 
-
-Podemos usar os seguintes operadores pré-definidos dentro das comparações if:
-
--e (verifica existência de arquivo ou diretório)
--d (verifica se é diretório)
--f (verifica se é arquivo e se existe)
--z (verifica se variável ou string está vazia)
--r (verifica se arquivo pode ser lido)
--w (verifica se arquivo pode ser escrito)
--x (verifica se arquivo pode ser executado)
-
-
 Para estrutura "for" segue a seguinte estrutura:
 
 for item in `comando`
+do
+  proposicao
+done
+
+OU 
+
+for item in $(comando)
 do
   proposicao
 done
@@ -184,11 +219,10 @@ done
 
 OU
 
-for (( i=numero_inteiro; condicao; incremento/decremento ))
+for((i=numero_inteiro; condicao; incremento/decremento))
 do
   proposicao
 done
-
 
 Exemplos com for:
 --------------------------------
