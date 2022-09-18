@@ -194,6 +194,8 @@ id (exibe id de usuários)
 
 uname (visualizar informações do sistema, exemplo: uname -r exibe versão do kernel)
 
+passwd (modifica senha do usuario atual)
+
 sudo passwd root (desbloqueia e cria nova senha para usuario root)
 
 sudo nano /etc/passwd (exibe de maneira detalhada id e outras informações de usuarios)
