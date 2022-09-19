@@ -1,0 +1,177 @@
+//======== Comandos Git Bash ==========//
+
+git config user.name "Nome" (configura nome do programador para o atual projeto)
+
+git config user.email "Email" (configura email do programador para o atual projeto)
+
+git config --global user.name "Nome" (configura nome do programador para todo e qualquer projeto desenvolvido no computador)
+
+git config --global user.email "Email" (configura email do programador para todo e qualquer projeto desenvolvido no computador)
+
+git config --global credential.helper store (salva usuário e senha do github em arquivo de texto local, 'store' para salvá-os permanentemente ou 'cache' para salvar periodicamente)
+
+git config -l (lista as configurações do git, -l de --list)
+
+git init (inicia repositório local do git)
+
+git add <file> ou git add . (adiciona arquivos não rastreados (untracked) para área de staging)
+
+git clone <URL_repositorio> (clona o repositorio com todos os commits)
+
+git restore --staged <file> OU git reset <file> (retira arquivo especificado da área de staging (preparação/encenação))
+
+git restore <file> (restaura arquivo deletado ou desfaz modificações no código do arquivo)
+
+git reset (limpa área de staging)
+
+git reset <hash_commit>/<tag> (comando usado para apagar histórico, todos os commits posteriores ao commit especificado são apagados, arquivos modificados voltam para área de staging, não há perda de dados. OBS: Comando útil para desfazer merge criado por estratégia recursiva)
+
+git reset --soft <hash_commit>/<tag> (apaga commit de forma segura, HEAD é anexado (detached) ao commit especificado, ou seja, ponteiro aponta pra ele passando a ser o commit mais recente. Porém os arquivos não são modificados (não há perda de dados), eles são transferidos para área de staging para serem ou não commitados, caso queira se desfazer das modificações use "git reset" para limpar área de staging seguido de git restore <file>)
+
+git reset --hard <hash_commit>/<tag> (apaga commit de forma forçada, pode haver perda de dados, mas o processo eh mais rápido. Basta especificar o hash do commit para que os commits posteriores sejam apagados)
+
+git commit -m "mensagem" (cria alteração ou commit, -m é abreviação de mensagem)
+
+git tag (exibe tags (etiquetas) criadas no projeto)
+
+git tag <nome_tag> (cria uma tag atrelada ao commit atual. OBS: tags criadas em branches que foram removidas continuam aparecendo no projeto)
+
+git tag -a <nome_tag> -m "mensagem" (cria uma tag contendo nome e email do autor com uma mensagem/descrição, -a é abreviação de --annotate)
+
+git tag -d <nome_tag> (apaga tag especificada)
+
+git checkout <hash_commit>/<tag> (navega pelas commits/tags da branch atual, não é possível fazer modificações)
+
+git checkout -b "nome" OU git branch "nome" (cria nova branch)
+
+git checkout -B "nome" (força criação de branch ou reseta branch de mesmo nome)
+
+git branch (exibe branches locais)
+
+git branch -a (lista todas as branches locais e remotas, -a é abreviação de --all)
+
+git branch -d <branch> (deleta branch local)
+
+git branch -D <branch> (força a exclusão da branch local mesmo sem ter feito merge, os dados nela são perdidos)
+
+git branch -m novo_nome (altera nome da branch atual)
+
+git log ou git log --oneline (retorna histórico de todos os commits na branch atual)
+
+git switch <branch> OU git checkout <branch> (navega entre as branches do projeto)
+
+git switch - OU git checkout - (retorna ao último commit acessado)
+
+git status (mostra quais arquivos estão ou não na área de staging e quais foram alterados)
+
+git show OU git show <file>/<hash_commit>/<tag> (exibe os arquivos e alterações do último commit ou do arquivo/commit/tag especificado)
+
+git show --stat ou git show --stat <hash_commit>/<tag> (exibe lista de arquivos alterados do último commit ou do commit/tag especificado)
+
+git stash (salva alterações de qualquer arquivo/diretório não commitados da área de staging em uma branch temporária)
+
+git stash push <file/directory> OU git stash push -m "mensagem" <file/directory> (git stash de arquivo/diretório específico)
+
+git stash apply OU git stash pop (recupera as alterações não commitadas que foram salvas no stash, "apply" recupera as informações e mantém a branch (mais recomendado) e "pop" recupera as informações e em seguida apaga a branch de stash)
+
+git stash list (lista todas as branches de stash que estão em uso)
+
+git stash drop (deleta último stash)
+
+git stash clear (apaga todos os stashes do projeto)
+
+git merge -s recursive <branch>/<tag>/<hash_commit> (força o merge a usar estratégia recursiva, comparando os códigos e criando um novo commit, -s é abreviação de strategy)
+
+git merge <branch>/<tag>/<hash_commit> (git vai comparar o codigo da branch especificada com o codigo da branch atual e escolher automaticamente a melhor estratégia (fast-foward ou recursivo) e mesclar os dois codigos. Caso haja um conflito basta resolver o problema no codigo e fazer um novo commit)
+
+git merge --abort (aborta operação de merge)
+
+git revert <hash_commit>/<tag> (cria um novo commit apagando as alterações feitas no commit especificado)
+
+git branch -m "novo_nome" (troca nome da branch atual por nome especificado)
+
+git diff <item1> <item2> (faz comparações entre itens, onde os itens podem ser: commits, arquivos, branches, etc)
+
+git fetch origin <branch> (baixa atualizações do repositorio remoto para o local, sem incorporar no projeto. Para incorporar no projeto faça: git merge <branch_atual> origin/<branch_remota>)
+
+git pull (git fetch + git merge, baixa atualizações e faz merge com o projeto local)
+
+git push OU git push origin <local_branch> (faz upload dos arquivos da branch local para branch remota de mesmo nome, caso esta exista)
+
+git push -u origin <local_branch> (faz upload da branch local que ainda não existe no repositório remoto, -u é abreviação para --set-upstream, que significa qualquer ação que faz referência ao repositório remoto. Assim que o push for feito, será pedido um pull request na página web do repositório remoto)
+
+git push -u origin --all OU git push --all (faz upload para o repositório remoto todas as branches locais)
+
+git push --tag (faz push de todas as tags do projeto)
+
+git push --force (substitui todos os arquivos e commits da branch remota pelos da branch atual)
+
+git push -d origin <remote_branch> (deleta branch remota que foi especificada)
+
+git remote add origin <URL_repositorio> (conecta o reporitório local com o remoto)
+
+git remote remove origin (desconecta o repositório local com o remoto)
+
+git remote -v (retorna URL do repositório remoto, -v é abreviação de --verbose ou verboso (que expressa muitas explicações))
+
+git commit --amend -m "mensagem" (modifica mensagem do commit mais recente)
+
+git rebase -i <hash_Commit>/<tag> (será feito um rebase, portanto abrirá editor de texto VIM com os commits mais recentes ao commit especificado, para alterar a mensagem do commit escrito no editor de texto, substitua a palavra PICK por reword, pressione ESC e digite ':wq'. Em seguida abrirá um editor de texto para modificar a mensagem. Flag -i significa "interactive")
+
+
+//======== Comandos Git Flow ==========//
+
+git flow init (inicia novo repositório usando gitflow)
+
+git flow feature start <branch_feature> (cria branch local para nova feature no projeto)
+
+git flow feature finish <branch_feature> (realiza merge com a branch develop e apaga branch feature do projeto)
+
+git flow release start <branch_number> (cria branch local para revisar codigo antes de mesclar com ambiente de produção (branch master))
+
+git flow release finish <branch_number> (realiza merge com a branch master e apaga branch release do projeto)
+
+git flow hotfix start <branch_number> (cria branch local para consertar código na master)
+
+git flow hotfix finish <branch_number> (realiza merge com a branch master e apaga hotfix do projeto)
+
+
+//========= Comandos gerais para terminal bash (linux) ==========//
+
+echo "Mensagem" >> <file> (cria arquivo de texto com conteúdo da "Mensagem")
+
+echo "arquivos que não irão para área de staging" >> .gitignore  (cria arquivo que lista os arquivos que não serão commitados)
+
+touch <file> (cria arquivo no diretório atual)
+
+ls (visualiza arquivos do diretorio) OU ls -a (visualiza arquivos ocultos tbm)
+
+cat <file> (exibe conteudo do arquivo de texto no terminal)
+
+rm <file> (remove arquivo pelo terminal, para que essa modificação possa ser rastreada depois)
+
+vim <file> OU nano <file> (abre arquivo com editor VIM ou editor nano respectivamente)
+
+//=========== Observações =========//
+
+O Github pede o Token Access ao invés da senha, crie o Token Access no GitHub no menu Settings/Developer Settings e marque todas as opções que contém "repo" em "Select Scopes".
+
+//================================//
+
+Comandos do editor VIM:
+
+O editor vim possui três modos: visual, inserção e de comando.
+Ao abrirmos o vim, ele é iniciado em modo de comando, para entrar em modo de inserção, teclamos "i" para realizar alterações e ESC para sair; para entrarmos em modo visual teclamos "v" e ESC para sair.
+Alguns comandos:
+/ termo_buscado (realiza buscas pelo documento, tecle "n" para buscar próximas ocorrências)
+:s/termo_buscado_linha_atual/termo_para_substituir
+:% s/termo_buscado_arquivo_atual/termo_para_substituir (% significa arquivo atual)
+:1,$ s/termo_buscado_arquivo_atual/termo_para_substituir (busca termo da linha 1 até última linha do arquivo)
+:w (salva arquivo)
+:q (sai do arquivo)
+:q! (força saída do arquivo) 
+:u (desfaz última alteração)
+:u0 (desfaz todas alterações)
+:redo (refaz alteração)
+
+No modo inserção o texto é selecionado com as teclas direcionais, teclamos "y" (yank ou puxão) para copiar texto e "p" (paste) para colar.
