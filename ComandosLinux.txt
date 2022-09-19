@@ -16,7 +16,9 @@ mv nome_arquivo nome_diretorio_destino OU mv nome_arquivo novo_nome_arquivo (ser
 
 cp -r nome_arquivo/nome_pasta nome_nova_copia (copia arquivo ou pasta)
 
-ln -rs nome_arquivo/nome_diretorio "nome_atalho" (cria link simbólico ou atalho de arquivos/diretorios. Obs: se usar apenas a flag -s, crie links de um arquivo/diretorio para o diretorio atual do terminal, caso contrário o link quebra, no entanto se usarmos -rs podemos criar atalhos para qualquer diretório, exemplo: ln -rs "/home/rodrigo/Komodo-IDE-12.0.1/bin/komodo" /usr/local/bin/komodo)
+ln -rs nome_arquivo/nome_diretorio nome_atalho (cria link simbólico ou atalho de arquivos/diretorios. Obs: se usar apenas a flag -s, crie links de um arquivo/diretorio para o diretorio atual do terminal, caso contrário o link quebra, no entanto se usarmos -rs podemos criar atalhos para qualquer diretório, exemplo: ln -rs "/home/rodrigo/Komodo-IDE-12.0.1/bin/komodo" /usr/local/bin/komodo)
+
+ln nome_arquivo nome_atalho (cria hardlinks ou links absolutos para o arquivo (não é permitido para diretorios), usando flag -P obtemos o mesmo resultado)
 
 unlink nome_atalho (deleta atalho de forma segura, também deleta arquivos comuns)
 
@@ -26,7 +28,7 @@ cd .. (retorna um nível acima do diretório atual)
 
 pwd (exibe caminho do diretorio)
 
-ls (exibe arquivos e pastas do diretorio, exemplo: ls -al, exibe todos os arquivos (inclusive ocultos) do diretório atual e detalhes, como níveis de permissão (usuario (dono), grupo do usuário dono e outros usuarios, respectivamente), nome do usuário, nome do grupo, data de modificação e nome do arquivo/pasta respecivamente)
+ls (exibe arquivos e pastas do diretorio, exemplo: ls -la exibe todos os arquivos (inclusive ocultos) do diretório atual e detalhes como níveis de permissão (usuario dono/proprietario, grupo do usuário dono/proprietario e outros usuarios respectivamente), número de hardlinks (links absolutos que apontam para inode do arquivo), nome do usuário dono/proprietario, nome do grupo do usuario, data de modificação e nome do arquivo/pasta respecivamente. Para ver inodes execute ls -i, para números mais compreensíveis, execute ls -h)
 
 namei -lx nome_diretorio (exibe permissões do diretorio)
 
@@ -130,16 +132,31 @@ find diretorio_pesquisa -iname "termo_pesquisa" (faz pesquisa em determinado dir
 
 locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos. Para saber apenas quantidade de itens encontrados, execute locate -c termo_pesquisa)
 
-sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; "usuario_root" seria novo usuario e dono, seguido do novo grupo "grupo_usuario_root"). Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo
+sudo login (realiza login com outro usuario)
 
-chmod +x nome_arquivo (torna arquivo executável, ao usar "ls" para listar arquivos do diretório, arquivos executáveis são mostrados em destaque)
-Obs: ENTENDER MAIS SOBRE USUARIOS E GRUPOS
+logout (realiza logout do usuario atual (quando não é o usuario principal))
 
-sudo chmod -R g+rwx nome_diretorio/nome_arquivo (grupo do dono (g) recebendo permissão de leitura (read - r),gravação (write - w) e execução (execute - x). 
+sudo adduser nome_novo_usuario (adiciona novo usuario ao sistema)
+
+sudo adduser nome_novo_usuario nome_grupo (adiciona novo usuario ao grupo especificado, se o grupo for o sudo dessa, ele recebe permissões de super usuario)
+
+sudo deluser nome_usuario (deleta usuario do sistema)
+
+sudo deluser nome_usuario grupo (deleta usuario do grupo especificado)
+
+sudo delgroup nome_grupo (deleta grupo do sistema)
+
+sudo addgroup nome_novo_grupo (adiciona novo grupo ao sistema)
+
+sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; usuario_root seria novo usuario dono/proprietario, seguido do novo grupo grupo_usuario_root. Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo)
+
+chmod +x nome_arquivo (torna arquivo executável para o grupo, usuário dono/proprietario e outros usuários. Obs: ao usar "ls" para listar arquivos do diretório, arquivos executáveis são mostrados em destaque. Podemos também decidir quem receberá permissão de execução, ex: chmod gou+x nome_arquivo (grupos, outros usuários e usuário dono/proprietario respecivamente))
+
+sudo chmod -R g+rwx nome_diretorio/nome_arquivo (grupo do dono/proprietario (g) recebendo permissão de leitura (read - r),gravação (write - w) e execução (execute - x). 
 Para remover permissão: chmod -R g-rwx
-Para alterar permissão do dono (usuário), usamos "u"; para outros usuários, "o" (others) e para todos usuários (usuário dono, grupo do dono e outros), "a" (all)
+Para alterar permissão do dono/proprietario (usuário), usamos "u"; para outros usuários, "o" (others) e para todos usuários (usuário dono/proprietario, grupo do dono/proprietario e outros), "a" (all)
 
-chmod 765 (usuário dono, grupo do dono e outros usuarios respectivamente)
+chmod 765 (usuário dono/proprietario, grupo do dono/proprietario e outros usuarios respectivamente)
 1 = executar (x)
 2 = gravar (w)
 4 = ler (r)
@@ -207,8 +224,6 @@ uname (visualizar informações do sistema, exemplo: uname -r exibe versão do k
 passwd (modifica senha do usuario atual)
 
 sudo passwd root (desbloqueia e cria nova senha para usuario root)
-
-sudo nano /etc/passwd (exibe de maneira detalhada id e outras informações de usuarios)
 
 bc (calculadora do bash que possui linguagem de programação. Obs: A variavel scale determina a precisão de casas decimais para cada resultado de divisão, como quando queremos 2 casas decimais: scale=2
 O comando também pode ser usado dessa forma, sendo a variável opcional (apenas para divisões): echo "variavel; operacao_matematica" | bc)
@@ -298,6 +313,12 @@ nome_aplicativo.AppImage (aplicativos que podem ser executados sem necessidade d
 Nem todo sistema permite instalação de pacotes snap (gerenciador de pacotes da Canonical), para ativá-lo basta comentar todas as linhas do arquivo /etc/apt/preferences.d/nosnap.pref e instalar aplicativo "snapd"
 
 Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo /etc/sudoers.d/0pwfeedback
+
+/etc/passwd (exibe de maneira detalhada id e outras informações de usuarios)
+
+/etc/group (exibe de maneira detalhada id e informações de grupos, inclusive usuários que fazem parte do grupo)
+
+Inodes ou nó-i, são estruturas responsáveis por conter informações básicas sobre arquivos e pastas, como permissões de acesso, identificação dos donos dos arquivos, data e hora do último acesso e alterações, tamanho e ponteiros para o arquivo em si. Cada arquivo/diretorio no kernel é identificado como um número de nó.
 
 /=======================================/
 
