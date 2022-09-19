@@ -215,6 +215,8 @@ neofetch (exibe informações e versão da distro linux)
 
 id (exibe id de usuários)
 
+whoami (exibe usuário atual)
+
 hostname (exibe hostname da máquina)
 
 hostnamectl set-hostname novo_nome_hostname (modifica nome do hostname)
