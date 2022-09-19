@@ -163,7 +163,7 @@ Comandos do editor VIM:
 O editor vim possui três modos: visual, inserção e de comando.
 Ao abrirmos o vim, ele é iniciado em modo de comando, para entrar em modo de inserção, teclamos "i" para realizar alterações e ESC para sair; para entrarmos em modo visual teclamos "v" e ESC para sair.
 Alguns comandos:
-/ termo_buscado (realiza buscas pelo documento, tecle "n" para buscar próximas ocorrências)
+/ termo_buscado (realiza buscas pelo documento, tecle "n" para buscar próximas ocorrências e "N" para voltar ocorrências anteriores)
 :s/termo_buscado_linha_atual/termo_para_substituir
 :% s/termo_buscado_arquivo_atual/termo_para_substituir (% significa arquivo atual)
 :1,$ s/termo_buscado_arquivo_atual/termo_para_substituir (busca termo da linha 1 até última linha do arquivo)
