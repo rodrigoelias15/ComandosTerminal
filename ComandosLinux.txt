@@ -289,15 +289,15 @@ ffmpeg -ss 0 -t 5 -i audio-original.mp3 audio-cortado.mp3 (cortar mp3)
 
 sudo shutdown -h "tempo em minutos" ou sudo shutdown -h "15:30"(comando para desligar pc automaticamente)
 
-/etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem)
-
-No arquivo /etc/fstab, defaults significa: rw, suid, dev, exec, auto, nouser, async
+/etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem). No arquivo /etc/fstab, defaults significa: rw, suid, dev, exec, auto, nouser, async
 
 comando1 && comando2 (&& separa comandos e os executa um de cada vez, o comando2 só é executado se o comando1 for bem sucedido, ex: mkdir 'pasta' && cd pasta && touch arquivo. & (colocar comando em segundo plano (background)) e ; (final de linha) também separam comandos, eles são executados independentemente se tiveram êxito, ex: cd /home/$USER/Documentos; ls -l. Se & estiver no fim da linha, o terminal é liberado para executar próximo comando, ex: firefox &. Obs: Para fechar terminal sem fechar o programa, digite exit para sair)
 
 nome_aplicativo.AppImage (aplicativos que podem ser executados sem necessidade de instalação e permissões de superusuário. Todos os arquivos ficam concentrados em um único pacote, sem necessidade de instalar outras dependencias/bibliotecas. Para executá-los basta fornecer permissão de execução ao arquivo)
 
 Nem todo sistema permite instalação de pacotes snap (gerenciador de pacotes da Canonical), para ativá-lo basta comentar todas as linhas do arquivo /etc/apt/preferences.d/nosnap.pref e instalar aplicativo "snapd"
+
+Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo /etc/sudoers.d/0pwfeedback
 
 /=======================================/
 
