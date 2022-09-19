@@ -1,1 +1,1 @@
-Alguns comandos de linux e shellscript
+Alguns comandos de terminal para linux, shellscript e git.
