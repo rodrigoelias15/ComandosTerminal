@@ -32,7 +32,13 @@ namei -lx nome_diretorio (exibe permissões do diretorio)
 
 nome_aplicativo --version (exibe versão do aplicativo)
 
+sudo snap install --classic nome_aplicativo (instala aplicativos snap diretamente da branch stable)
+
 sudo snap remove nome_aplicativo (remove aplicativos instalados por snap, existem outros comandos para o snap)
+
+sudo snap info nome_aplicativo (informações sobre aplicativo (funciona como "show" do apt))
+
+sudo snap list nome_aplicativo (exibe no terminal se aplicativo está instalado)
 
 apt-cache opcao comando (permite buscar informações no cache do apt (Advanced Packaging Tool))
 
@@ -78,8 +84,8 @@ sed (aplicativo GNU para edição de textos, os arquivos são editados porém n�
 sed -i 's/palavra_para_modificar/nova_palavra/' arquivo_Texto (comando s para substituir primeiras ocorrencias em todas as linhas, e -i para salvar arquivo)
 sed 's/palavra_para_modificar/nova_palavra/g' arquivo_Texto (comando g (--global) para substituir todas as ocorrencias)
 sed '1,3 s/palavra_para_modificar/nova_palavra/' arquivo_Texto (substitui ocorrencias da linha 1 à 3)
-sed 's/^/expressao' arquivo_Texto (adiciona nova expressão no início de cada linha)
-sed 's/$/expressao' arquivo_Texto (adiciona nova expressão no final de cada linha)
+sed 's/^/nova_palavra' arquivo_Texto (adiciona nova expressão no início de cada linha)
+sed 's/$/nova_palavra' arquivo_Texto (adiciona nova expressão no final de cada linha)
 
 variavel="conteudo" (sem espaços entre "=" e o conteudo, cria variaveis no terminal como no exemplo:
 caminho="/home/rodrigo/Downloads"
@@ -122,7 +128,7 @@ man nome_aplicativo/comando (manual do aplicativo ou comando)
 
 find diretorio_pesquisa -iname "termo_pesquisa" (faz pesquisa em determinado diretorio, flag -name pesquisa por nome, -i ignora caixa alta/baixa. Comando permite fazer buscas além do nome)
 
-locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos)
+locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos. Para saber apenas quantidade de itens encontrados, execute locate -c termo_pesquisa)
 
 sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; "usuario_root" seria novo usuario e dono, seguido do novo grupo "grupo_usuario_root"). Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo
 
@@ -191,6 +197,10 @@ history (histório de comandos do terminal, history -c limpa o histórico)
 neofetch (exibe informações e versão da distro linux)
 
 id (exibe id de usuários)
+
+hostname (exibe hostname da máquina)
+
+hostnamectl set-hostname novo_nome_hostname (modifica nome do hostname)
 
 uname (visualizar informações do sistema, exemplo: uname -r exibe versão do kernel)
 
@@ -281,9 +291,13 @@ sudo shutdown -h "tempo em minutos" ou sudo shutdown -h "15:30"(comando para des
 
 /etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem)
 
-No arquivo /etc/fstab defaults significa: rw, suid, dev, exec, auto, nouser, and async.
+No arquivo /etc/fstab, defaults significa: rw, suid, dev, exec, auto, nouser, async
 
 comando1 && comando2 (&& separa comandos e os executa um de cada vez, o comando2 só é executado se o comando1 for bem sucedido, ex: mkdir 'pasta' && cd pasta && touch arquivo. & (colocar comando em segundo plano (background)) e ; (final de linha) também separam comandos, eles são executados independentemente se tiveram êxito, ex: cd /home/$USER/Documentos; ls -l. Se & estiver no fim da linha, o terminal é liberado para executar próximo comando, ex: firefox &. Obs: Para fechar terminal sem fechar o programa, digite exit para sair)
+
+nome_aplicativo.AppImage (aplicativos que podem ser executados/instalados sem permissões de superusuário)
+
+Nem todo sistema permite instalação de pacotes snap, para ativá-lo basta comentar todas as linhas do arquivo /etc/apt/preferences.d/nosnap.pref e instalar aplicativo "snapd"
 
 /=======================================/
 
