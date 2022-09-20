@@ -32,15 +32,9 @@ variavel=$[num1 * num2] (operações matemáticas com números inteiros. Podem s
 
 read valor_digitado (comando usado para entrada de valores pelo teclado, ex: read -p "Digite valor para variavel: " valor_digitado, valor_digitado precisa de espaço depois das aspas duplas)
 
-<<<<<<< HEAD
 nome_aplicativo < nome_arquivo (redirecionamento de entrada, quando o conteudo do arquivo é passado para o aplicativo e interpretado como entrada, exemplo: no caso do aplicativo "wc", a saída do comando seria a quantidade de linhas, palavras e bytes do arquivo de texto; caso fosse o aplicativo "bc" (calculadora), havendo um texto no arquivo como 5*3+4^2, a saída seria o resultado da operação, 31 neste caso)
 
 nome_aplicativo << eof (redirecionamento de entrada, esse tipo de redirecionamento funciona como o anterior (nome_aplicativo < nome_arquivo), porém não importamos o conteúdo de um arquivo para o aplicativo, nós escrevemos em tempo real o conteudo que queremos redirecionar como entrada. Para salvar e finalizar o conteúdo, escrevemos eof (quer dizer "end of file") na ultima linha e teclamos ENTER. Obs: eof é uma recomendação, podemos substituir eof por outra palavra qualquer)
-=======
-wc < nome_arquivo (redirecionamento de entrada, quando as informações do arquivo são passadas para o comando. Neste caso a saída do comando é a qtdade de linhas, palavras e bytes do arquivo)
-
-wc << comando_fim_arquivo (redirecionamento de entrada, podendo-se adicionar linhas de comando em forma de texto, para fim de arquivo geralmente usamos eof (end of file) na última linha do comando. Neste caso a saída do comando é a qtdade de linhas, palavras e bytes do texto que foi escrito)
->>>>>>> 13996312f2289f8469c00ab6805067fe6f56cc4b
 
 
 //========= Script Propriamente Dito ===========//
