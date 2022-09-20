@@ -150,7 +150,7 @@ sudo addgroup nome_novo_grupo (adiciona novo grupo ao sistema)
 
 sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; usuario_root seria novo usuario dono/proprietario, seguido do novo grupo grupo_usuario_root. Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo)
 
-chmod +x nome_arquivo (torna arquivo executável para o grupo, usuário dono/proprietario e outros usuários. Obs: ao usar "ls" para listar arquivos do diretório, arquivos executáveis são mostrados em destaque. Podemos também decidir quem receberá permissão de execução, ex: chmod gou+x nome_arquivo (grupos, outros usuários e usuário dono/proprietario respecivamente))
+chmod +x nome_arquivo (torna arquivo executável para o grupo, usuário dono/proprietario e outros usuários. Podemos também decidir quem receberá permissão de execução, ex: chmod gou+x nome_arquivo (grupos, outros usuários e usuário dono/proprietario respecivamente))
 
 sudo chmod -R g+rwx nome_diretorio/nome_arquivo (grupo do dono/proprietario (g) recebendo permissão de leitura (read - r),gravação (write - w) e execução (execute - x). 
 Para remover permissão: chmod -R g-rwx
@@ -323,6 +323,15 @@ Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo
 /etc/group (exibe de maneira detalhada id e informações de grupos, inclusive usuários que fazem parte do grupo)
 
 Inodes ou nó-i, são estruturas responsáveis por conter informações básicas sobre arquivos e pastas, como permissões de acesso, identificação dos donos dos arquivos, data e hora do último acesso e alterações, tamanho e ponteiros para o arquivo em si. Cada arquivo/diretorio no kernel é identificado como um número de nó.
+
+Cores de arquivos/pastas da saida ls (não são padrões em todos os sistemas):
+Verde: arquivo executável
+Azul: pasta
+Azul céu: link simbólico
+Rosa: arquivo de imagem
+Vermelho: arquivo morto (archive file), ou seja, arquivos compactados (zip, rar, tar...) que não possuem permissão de execução para nenhum usuário
+Vermelho com fundo preto: link quebrado
+Amarelo com fundo preto: dispositivo
 
 /=======================================/
 
