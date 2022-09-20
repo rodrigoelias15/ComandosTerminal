@@ -102,7 +102,7 @@ env | grep "variavel" (busca variáveis ambiente salvas)
 
 OBS: Olhar arquivo ShellScript.txt para se aprofundar mais sobre scripts shell, variáveis, etc.
 
-alias nome_apelido="comando" (salva atalhos ou apelidos para comandos do terminal, mas salva temporariamente. Para salvar permanentemente basta acessar o arquivo ~/.bashrc e digitar na ultima linha: alias nome_apelido = "comando")
+alias nome_apelido="comando" (salva atalhos ou apelidos para comandos do terminal, mas salva temporariamente. Para salvar localmente e de forma permanentemente o apelido, basta acessar o arquivo ~/.bashrc e digitar na ultima linha o comando apresentado. Comando compgen -c exibe os alias existentes)
 
 telnet endereco_ip num_porta (serve para realizar conexões remotas com outras máquinas)
 
@@ -128,7 +128,7 @@ wget endereco_url (usada para recuperar conteúdos e arquivos de vários servido
 
 man nome_aplicativo/comando (manual do aplicativo ou comando)
 
-find diretorio_pesquisa -iname "termo_pesquisa" (faz pesquisa em determinado diretorio, flag -name pesquisa por nome, -i ignora caixa alta/baixa. Comando permite fazer buscas além do nome)
+find diretorio_pesquisa -iname termo_pesquisa (faz pesquisa em determinado diretorio, flag -name pesquisa por nome, -i ignora caixa alta/baixa. Comando permite fazer buscas além do nome)
 
 locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos. Para saber apenas quantidade de itens encontrados, execute locate -c termo_pesquisa)
 
