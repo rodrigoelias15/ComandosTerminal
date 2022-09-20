@@ -76,7 +76,7 @@ nome_aplicativo --help (ajuda do linux referente a algum comando ou programa)
 
 man nome_aplicativo (manual do aplicativo)
 
-wc nome_arquivo (exibe número de linhas, palavras e caracteres do arquivo (contando com espaços) respectivamente)
+wc nome_arquivo (exibe número de linhas, palavras e tamanho em bytes do arquivo respectivamente, podem ser adicionados vários arquivos, no final o wc (word count) faz o total de linhas, palavras e tamanho em bytes)
 
 tail nome_arquivo (exibe últimas 10 linhas de um arquivo, para exibir número específico de linhas digite tail -n nome_arquivo (-n para número de linhas))
 
@@ -179,17 +179,17 @@ killall nome_aplicativo (mata todos os processos referentes àquele aplicativo)
 
 inxi (retorna dados do hardware do pc, para mais detalhes use inxi -F)
 
+echo $? (retorna status do último comando utilizado)
+
 echo "string" > nome_arquivo (adiciona string no arquivo substituindo o conteudo existente)
 
 echo "string" >> nome_arquivo (adiciona string no arquivo em uma nova linha)
 
-echo "$?" (retorna status do último comando utilizado)
+nome_aplicativo > nome_arquivo (redireciona saida do aplicativo e salva no arquivo)
 
-ls > nome_arquivo (outro exemplo de que as informações do comando podem ser salvas em um arquivo)
+nome_aplicativo < nome_arquivo (redirecionamento de entrada, quando o conteudo do arquivo é passado para o aplicativo e interpretado como entrada, exemplo: no caso do aplicativo "wc", a saída do comando seria a quantidade de linhas, palavras e bytes do arquivo de texto; caso fosse o aplicativo "bc" (calculadora), havendo um texto no arquivo como 5*3+4^2, a saída seria o resultado da operação, 31 neste caso)
 
-wc < nome_arquivo (redirecionamento de entrada, quando as informações do arquivo são passadas para o comando)
-
-wc << comando_fim_arquivo (redirecionamento de entrada, podendo-se adicionar linhas de comando em forma de texto, geralmente para fim de arquivo usamos eof (end of file), escrito na última linha do comando)
+nome_aplicativo << eof (redirecionamento de entrada, esse tipo de redirecionamento funciona como o anterior (nome_aplicativo < nome_arquivo), porém não importamos o conteúdo de um arquivo para o aplicativo, nós escrevemos em tempo real o conteudo que queremos redirecionar como entrada. Para salvar e finalizar o conteúdo, escrevemos eof (quer dizer "end of file") na ultima linha e teclamos ENTER. Obs: eof é uma recomendação, podemos substituir eof por outra palavra qualquer)
 
 sudo a2enmod php5.6 (ativa php)
 
