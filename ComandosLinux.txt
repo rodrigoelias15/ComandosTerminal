@@ -213,7 +213,9 @@ history (histório de comandos do terminal, history -c limpa o histórico)
 
 neofetch (exibe informações e versão da distro linux)
 
-id (exibe id de usuários)
+id (exibe id de usuário atual e dos grupos que ele faz parte)
+
+id usuario (exibe id do usuario especificado e dos grupos que ele faz parte)
 
 whoami (exibe usuário atual)
 
@@ -318,7 +320,7 @@ Nem todo sistema permite instalação de pacotes snap (gerenciador de pacotes da
 
 Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo /etc/sudoers.d/0pwfeedback
 
-/etc/passwd (exibe de maneira detalhada id e outras informações de usuarios)
+/etc/passwd (exibe informações das contas de cada usuario do sistema)
 
 /etc/group (exibe de maneira detalhada id e informações de grupos, inclusive usuários que fazem parte do grupo)
 
