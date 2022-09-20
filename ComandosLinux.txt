@@ -292,7 +292,9 @@ Acrescentando uid=id_usuario ao /etc/fstab, permite que ao deletar um arquivo/pa
 
 CTRL + R = buscar comando usado no terminal
 
-CTRL + U = apaga do local do cursor até inicio da linha
+CTRL + U = apaga texto a partir do cursor até inicio da linha
+
+CTRL + D = mesma função do comando exit (linha do terminal precisa estar vazia)
 
 stdout, stdin e stderr (fluxo de dados do Unix. Representa a saida de dados, entrada de dados e exibição de erro respectivamente)
 
