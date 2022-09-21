@@ -310,9 +310,9 @@ sudo -i OU su - (também entram em modo root, "sudo -" exige senha)
 
 ffmpeg -ss 0 -t 5 -i audio-original.mp3 audio-cortado.mp3 (cortar mp3)
 
-sudo shutdown -h "tempo em minutos" ou sudo shutdown -h "15:30"(comando para desligar pc automaticamente)
+sudo shutdown -h "tempo em minutos" ou sudo shutdown -h "15:30" (comando para desligar pc automaticamente)
 
-/etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem). No arquivo /etc/fstab, defaults significa: rw, suid, dev, exec, auto, nouser, async
+/etc/fstab (arquivo para configuração de dispositivos de armazenamento e pontos de montagem. Neste arquivo, defaults significa: rw, suid, dev, exec, auto, nouser, async)
 
 comando1 && comando2 (&& separa comandos e os executa um de cada vez, o comando2 só é executado se o comando1 for bem sucedido, ex: mkdir 'pasta' && cd pasta && touch arquivo. & (colocar comando em segundo plano (background)) e ; (final de linha) também separam comandos, eles são executados independentemente se tiveram êxito, ex: cd /home/$USER/Documentos; ls -l. Se & estiver no fim da linha, o terminal é liberado para executar próximo comando, ex: firefox &. Obs: Para fechar terminal sem fechar o programa, digite exit para sair)
 
