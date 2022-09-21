@@ -108,7 +108,9 @@ telnet endereco_ip num_porta (serve para realizar conexões remotas com outras m
 
 ifconfig (exibe informações sobre interface de rede)
 
-netstat -atunp (A opção -a permite a visualização de todas as conexões de rede e o número de identificação do processo. O nome do programa associado a cada conexão é exibido pela opção -p, as opções -t e -u indicam que devem ser exibidas somente conexões TCP e UDP, respectivamente. Por último, a opção -n desabilita a conversão de endereços IP em nomes. Maiores informações sobre as opções e o funcionamento do netstat podem ser obtidas em sua man page. Quando a porta estiver com status LISTEN significa que está aberta para receber novas conexões).
+ss (comando que exibe informações detalhadas sobre sockets do subsistema de rede e é mais ágil que netstat. Para ouvir portas abertas, execute ss -l)
+
+netstat (mostra informações do subsistema de rede do Linux. Para exibir portas abertas, execute netstat -l, a porta com status LISTEN está aberta para receber novas conexões. Outro exemplo do comando: netstat -atunp (A opção -a permite a visualização de todas as conexões de rede e o número de identificação do processo. O nome do programa associado a cada conexão é exibido pela opção -p, as opções -t e -u indicam que devem ser exibidas somente conexões TCP e UDP, respectivamente. Por último, a opção -n desabilita a conversão de endereços IP em nomes)
 
 ip address (verifica ip da máquina)
 
@@ -120,11 +122,11 @@ curl -O endereco_url (baixa arquivo com mesmo nome que esta na URL)
 
 curl -o nome_arquivo endereco_url (baixa arquivo da URL com nome especificado)
 
+wget endereco_url (usada para recuperar conteúdos e arquivos de vários servidores na internet)
+
 sudo ufw app list (lista as aplicações protegidas pelo firewall)
 
 sudo ufw app info "Apache Full" (informações sobre o perfil Apache Full do firewall)
-
-wget endereco_url (usada para recuperar conteúdos e arquivos de vários servidores na internet)
 
 man nome_aplicativo/comando (manual do aplicativo ou comando)
 
@@ -136,9 +138,9 @@ sudo login (realiza login com outro usuario)
 
 logout (realiza logout do usuario atual (quando não é o usuario principal))
 
-sudo adduser nome_novo_usuario (adiciona novo usuario ao sistema)
+sudo adduser novo_usuario (adiciona novo usuario e grupo de mesmo nome (grupo primário) ao sistema)
 
-sudo adduser nome_novo_usuario nome_grupo (adiciona novo usuario ao grupo especificado, se o grupo for o sudo dessa, ele recebe permissões de super usuario)
+sudo adduser novo_usuario nome_grupo (adiciona novo usuario ao grupo especificado, se o grupo for o sudo dessa, ele recebe permissões de super usuario)
 
 sudo deluser nome_usuario (deleta usuario do sistema)
 
@@ -148,9 +150,9 @@ sudo delgroup nome_grupo (deleta grupo do sistema)
 
 sudo addgroup nome_novo_grupo (adiciona novo grupo ao sistema)
 
-sudo chown -R usuario_root:grupo_usuario_root nome_diretorio/nome_arquivo (-R: recursivamente, de dentro para fora; usuario_root seria novo usuario dono/proprietario, seguido do novo grupo grupo_usuario_root. Pode ser escrito também como: sudo chown -R usuario_root.grupo_usuario_root nome_diretorio/nome_arquivo)
+sudo chown -R usuario_proprietario:grupo_usuario_proprietario nome_diretorio/nome_arquivo (-R (recursivamente) significa de dentro para fora; usuario_proprietario seria o novo usuario dono do arquivo/pasta, seguido do grupo do usuario proprietario. Pode ser escrito também como: sudo chown -R usuario_proprietario.grupo_usuario_proprietario nome_diretorio/nome_arquivo)
 
-chmod +x nome_arquivo (torna arquivo executável para o grupo, usuário dono/proprietario e outros usuários. Podemos também decidir quem receberá permissão de execução, ex: chmod gou+x nome_arquivo (grupos, outros usuários e usuário dono/proprietario respecivamente))
+chmod +x nome_arquivo (torna arquivo executável para todos os usuários, ou seja, usuário dono/proprietario, grupo e outros usuários. Podemos decidir também quem recebe permissão de execução, ex: chmod gou+x nome_arquivo (grupos, outros usuários e usuário dono/proprietario respecivamente))
 
 sudo chmod -R g+rwx nome_diretorio/nome_arquivo (grupo do dono/proprietario (g) recebendo permissão de leitura (read - r),gravação (write - w) e execução (execute - x). 
 Para remover permissão: chmod -R g-rwx
@@ -173,7 +175,7 @@ ps (processos em execução, inclusive os que estão em background. Para mais de
 
 free (retorna consumo de memoria, para valores em MB utilize comando free -m)
 
-kill nome_aplicativo (mata o processo em execução pelo PID)
+kill numero_pid (mata o processo em execução pelo PID)
 
 killall nome_aplicativo (mata todos os processos referentes àquele aplicativo)
 
@@ -215,7 +217,7 @@ neofetch (exibe informações e versão da distro linux)
 
 id (exibe id de usuário atual e dos grupos que ele faz parte)
 
-id usuario (exibe id do usuario especificado e dos grupos que ele faz parte)
+id nome_usuario (exibe id do usuario especificado e dos grupos que ele faz parte)
 
 whoami (exibe usuário atual)
 
