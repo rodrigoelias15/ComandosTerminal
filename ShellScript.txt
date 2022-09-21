@@ -1,12 +1,12 @@
 bash (cria um novo bash dentro do terminal atual)
 
-unset (deleta variavel criada localmente)
-
 variavel="conteudo" (cria variavel no bash local, sem espaços entre o conteudo e sinal de "=", para que o linux não interprete como um comando)
 
 variavel=`comando` (insere a saída do comando na variável, basta colocá-lo entre crases. Outra forma de escrever é usando o subshell dessa forma: variavel=$(comando))
 
 echo $variavel (exibe conteúdo da variável)
+
+echo "mensagem" (comando para saída de mensagens, ex: echo -n $PATH, exibe conteúdo da variável PATH sem quebrar linha)
 
 export variavel (variavel global e temporaria, é reconhecida em qualquer terminal e bash)
 
@@ -18,17 +18,17 @@ echo ${variavel_array[*]} (imprime todos os elementos do array)
 
 echo ${variavel_array[i]} (imprime elemento de índice "i" do array)
 
+variavel=$[num1 * num2] (operações matemáticas com números inteiros. Podem ser usado diferentes operadores como *, /, +, -. Ex: var2=$[$var1 * (5 - 3)]
+
+unset (deleta variavel criada localmente)
+
 unset ${variavel_array[i]} (deleta elemento de indice "i")
 
-alias apelido_criado="comando_do_linux" (comando para criar apelidos no bash, sem espaços entre o conteudo do apelido e sinal de "=")
+nome_funcao(){ comandos; } (cria uma função no bash, é necessário soltar espaço entre comandos e chaves. O ponto-vírgula serve para separar comandos se escritos na mesma linha, para escrevê-los numa linha de cada vez, basta teclar ENTER após o primeiro parenteses, para salvar e terminar o escopo da função, basta fechar chaves na linha seguinte. Para executar a função, digite seu nome. Comando typeset -f lista todas as funções do bash)
+
+alias apelido_criado="comando" (cria apelidos no bash, sem espaços entre o conteudo (comando) e sinal de "=")
 
 unalias apelido_criado (apaga apelido criado)
-
-nome_funcao(){comandos_da_funcao} (cria função dentro do bash, para executá-la basta escrever seu nome. Comando typeset -f lista todas as funções do bash)
-
-echo mensagem (comando para saída de mensagens, ex: echo -n $PATH, exibe conteúdo da variável PATH sem quebrar linha)
-
-variavel=$[num1 * num2] (operações matemáticas com números inteiros. Podem ser usado diferentes operadores como *, /, +, -. Ex: var2=$[$var1 * (5 - 3)]
 
 read valor_digitado (comando usado para entrada de valores pelo teclado, ex: read -p "Digite valor para variavel: " valor_digitado, valor_digitado precisa de espaço depois das aspas duplas)
 
@@ -93,8 +93,8 @@ fi
 ------------------------------------------------------------------
 
 
-If-then-else e if-aninhado para comparações do tipo arquivo, strings e numérica. Para isso usamos o comando test (if test condicao) ou ocultando-o com colchetes duplos (if [[ condicao ]]), pois estes possuem mais recursos e são mais flexíveis que colchete simples. Neste caso é necessário um espaço entre if, condição e colchetes. Para verificar mais de uma condição, pode-se acrescentar operadores como AND ou OR (if [[ condicao ]] && [[ condicao ]]).
-Para comparações de números inteiros, usamos os operadores:
+If-then-else e if-aninhado para comparações do tipo arquivo, strings e numérica. Para isso usamos o comando test (if test condicao) ou ocultando-o com colchetes duplos (if [[ condicao ]]), pois estes possuem mais recursos e são mais flexíveis que colchetes simples. É necessário um espaço entre if, condição e colchetes. Para verificar mais de uma condição, pode-se acrescentar operadores como AND ou OR (if [[ condicao ]] && [[ condicao ]]).
+Para comparação de números inteiros, usamos os seguintes operadores:
 
 -eq (equal)
 -ne (not equal)
@@ -124,10 +124,10 @@ fi
 
 Podemos usar os seguintes operadores pré-definidos dentro das comparações if:
 
--e (verifica existência de arquivo ou diretório)
+-e (verifica existência (exists) de arquivo ou pasta)
 -d (verifica se é diretório e se existe)
 -f (verifica se é arquivo e se existe)
--z (verifica se variável ou string está vazia)
+-z (verifica se variável ou string está vazia (igual a zero))
 -r (verifica se arquivo pode ser lido)
 -w (verifica se arquivo pode ser escrito)
 -x (verifica se arquivo pode ser executado)
