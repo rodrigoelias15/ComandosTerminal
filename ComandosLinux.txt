@@ -162,6 +162,10 @@ chmod 765 (usuário dono/proprietario, grupo do dono/proprietario e outros usuar
 2 = gravar (w)
 4 = ler (r)
 
+umask (exibe valor atual de umask, valor padrão é 0002)
+
+umask valor_escolhido (altera valor do umask)
+
 grep "termo_pesquisa" nome_diretorio/nome_arquivo/* (realiza busca por padrões dentro de arquivos de texto. Podemos também salvar a saida do comando dentro de um arquivo, exemplo:
 grep -i "termo_pesquisa" nome_diretorio/nome_arquivo/* > saida.txt)
 Usando grep junto com comando ls podemos pesquisar pelo nome de arquivos, exemplo:  ls | grep "termo_pesquisa" nome_diretorio/nome_arquivo/*
@@ -256,7 +260,7 @@ sudo mount -t ntfs -o uid=rodrigo,gid=rodrigo /dev/sda1 /media/nome_pasta/)
 
 sudo umount nome_dispositivo (desmonta sistema de arquivos de um dispositivo, ex: sudo umount /dev/sdb1)
 
-sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) que formata pendrive para tipo de arquivo ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
+sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) e obsoleto que formata pendrive para tipo de arquivo ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
 
 sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
 
@@ -286,7 +290,14 @@ Exemplo do que deve ser adicionado ao texto:
 # partição HD do windows
 UUID="6E2FD13B75546EF3" /media/windowsArq ntfs defaults,uid=1000 0 0
 
-Acrescentando uid=id_usuario ao /etc/fstab, permite que ao deletar um arquivo/pasta a partição crie uma lixeira automaticamente (.Trash-<id_usuario>, por exemplo .Trash-1000/), para que nada seja deletado permanentemente, ao mesmo tempo que torna o usuario passado como id no /etc/fstab seja proprietario da partição, dispensando o comando chown.
+Acrescentando uid=id_usuario ao /etc/fstab permite que ao deletar um arquivo/pasta, a partição crie uma lixeira automaticamente (.Trash-<id_usuario>, por exemplo .Trash-1000/) para que nada seja deletado permanentemente, ao mesmo tempo que torna o usuario passado como id proprietario da partição.
+Se desejar alterar as permissões de usuario, grupo e outros usuários na partição montada, pode-se acrescentar o parâmetro umask junto ao uid. O Linux tem por padrão fornecer para novos arquivos permissões 0666 e para pastas 0777 (sem contar com o valor de umask).
+Neste caso em que a partição está iniciando com o sistema, pode-se acrescentar o parametro umask junto ao uid para que seu valor seja subtraido das permissões originais, se na partição NTFS os arquivos e pastas tem permissões 0777, o valor de umask é subtraído das permissões, por exemplo umask=122 deixa as permissões como: 0777 - 122 = 0655, ou seja, os arquivos agora tem permissões de leitura e escrita para o usuario proprietario, e leitura e execução para o grupo do usuario proprietário e outros usuários.
+Como o comando umask tem valor padrão 0002, ao criar arquivos/pastas no sistema as permissões começam com 0664.
+
+Exemplo do que deve ser adicionado ao texto:
+# partição HD do windows
+UUID="6E2FD13B75546EF3" /media/windowsArq ntfs defaults,uid=1000,umask=001 0 0
 
 /=========================================================/
 
