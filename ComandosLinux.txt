@@ -244,17 +244,17 @@ alsamixer (programa de configuração das saídas de som do sistema)
 
 /============ Partições, dispositivos e sistema de arquivos =============/
 
-lsblk (identifica caminho dos dispositivos)
+lsblk (lista dispositivos de bloco (dispositivos de armazenamento e transferência de dados))
 
-findmnt (lista dispositivos montados)
+blkid (exibe informações de dispositivos de bloco, mesmo que não estejam montados)
 
-blkid (exibe informação de partições, mesmo que não estejam montados)
+findmnt (lista todos os sistemas de arquivos montados ou encontra um especifico)
 
-sudo fdisk -l (exibe partições montadas)
+sudo fdisk -l (exibe partições montadas, aplicativo fdisk manipula tabela de partições de disco)
 
-sudo fdisk nome_dispositivo (criar nova partição, por exemplo fdisk /dev/sdb)
+sudo fdisk nome_dispositivo (cria nova partição, por exemplo fdisk /dev/sdb)
 
-mount (comando lista todo o conteúdo do arquivo /etc/mtab. Porém ele também é usado para montar um dispositivo da seguinte forma:
+mount (comando lista conteúdo do arquivo /etc/mtab. Ele também é usado para montar um dispositivo da seguinte forma:
 mount -t tipo_sistema_arquivos nome_dispositivo local_montagem, ex: mount -t vfat /dev/sdb1 /media/teste (-t é abreviação de --type ou tipo de sistema de arquivos do dispositivo que será montado). Outro exemplo:
 sudo mount -t ntfs -o uid=rodrigo,gid=rodrigo /dev/sda1 /media/nome_pasta/)
 
