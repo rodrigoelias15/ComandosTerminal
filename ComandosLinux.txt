@@ -248,11 +248,11 @@ lsblk (lista dispositivos de bloco (dispositivos de armazenamento e transferênc
 
 blkid (exibe informações de dispositivos de bloco, mesmo que não estejam montados)
 
-findmnt (lista todos os sistemas de arquivos montados ou encontra um especifico)
+findmnt (lista todos os sistemas de arquivos e respectivos pontos de montagem. Pode encontrar um sistema de arquivos especifico também)
 
-sudo fdisk -l (exibe partições montadas, aplicativo fdisk manipula tabela de partições de disco)
+sudo fdisk -l (exibe partições montadas, aplicativo fdisk permite manipular tabelas de partições de disco)
 
-sudo fdisk nome_dispositivo (cria nova partição, por exemplo fdisk /dev/sdb)
+sudo fdisk nome_dispositivo (permite editar ou criar nova partição, ao executar o comando pode-se navegar pelas opções do programa, por exemplo: sudo fdisk /dev/sdb)
 
 mount (comando lista conteúdo do arquivo /etc/mtab. Ele também é usado para montar um dispositivo da seguinte forma:
 mount -t tipo_sistema_arquivos nome_dispositivo local_montagem, ex: mount -t vfat /dev/sdb1 /media/teste (-t é abreviação de --type ou tipo de sistema de arquivos do dispositivo que será montado). Outro exemplo:
@@ -264,11 +264,13 @@ sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file sys
 
 sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
 
-dd if=nome_arquivo.iso of=/dev/sdb status=progress && sync (comando é um conversor de arquivos e também grava imagem ISO em CD/DVD/pendrive. if: arquivo origem, stdIN (entrada de dados); of: arquivo destino, stdOUT (saída de dados) e sync (garante que os dados serão copiados imediatamente para mídia))
+
+dd if=nome_arquivo.iso of=/dev/sdb status=progress && sync (aplicativo converte e copia arquivos, de maneira indireta também grava arquivos .ISO em CD/DVD/pendrive. Graças ao aplicativo sync, a gravação de arquivos no dispositivo é feita de maneira síncrona, por padrão o linux é assíncrono e as gravações são armazenadas em buffer (cache) para depois gravar num dispositivo de armazenamento.
+if: arquivo de entrada de dados (input file); of: arquivo de saida de dados (output file))
 
 sudo eject nome_dispositivo (ejetar dispositivo, por exemplo eject /dev/sdc)
 
-sudo ntfsfix nome_dispositivo (serve para corrigir dispositivos ntfs com o app ntfs-3g)
+sudo ntfsfix nome_dispositivo (serve para corrigir dispositivos ntfs, para obtê-lo basta instalar o aplicativo ntfs-3g)
 
 df -h (df (disk free) é usado para ver espaço de armazenamento nas unidades, use -h (significa --human-readable) para deixar valores mais compreensíveis)
 
@@ -310,7 +312,7 @@ CTRL + U = apaga texto a partir do cursor até inicio da linha
 
 CTRL + D = mesma função do comando exit (linha do terminal precisa estar vazia)
 
-stdout, stdin e stderr (fluxo de dados do Unix. Representa a saida de dados, entrada de dados e exibição de erro respectivamente)
+stdout, stdin e stderr (representa o fluxo de saida de dados (standard output), fluxo de entrada de dados (standard input) e exibição de erro (standard error), respectivamente)
 
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
 
