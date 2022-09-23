@@ -283,7 +283,7 @@ Arquivo ~/.profile é executado quando feito login no terminal
 Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o terminal é aberto (bash é carregado interativamente), fazendo referência ao usuário atual (com ou sem login).
 Para salvar aliases, funções e variáveis de forma permanentemente e global (para todos usuários), basta escrevê-las no arquivo de configuração /etc/bash.bashrc
 
-Resumindo a execução dos arquivos, na iniciallização do sistema o arquivo /etc/profile é executado; ao fazer login do usuario, os arquivos /etc/profile e ~/.profile são executados e o arquivo ~/.bashrc é executado indiretamente pelo ~./profile; ao abrir o terminal apenas o ~/.bashrc é executado
+Resumindo a execução dos arquivos, na iniciallização do sistema apenas o arquivo /etc/profile é executado; ao abrir o terminal apenas o ~/.bashrc é executado e ao fazer login do usuario, os arquivos /etc/profile e ~/.profile são executados e o arquivo ~/.bashrc é executado indiretamente pelo ~./profile; 
 
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
 
