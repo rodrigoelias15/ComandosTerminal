@@ -262,7 +262,7 @@ sudo umount nome_dispositivo (desmonta sistema de arquivos de um dispositivo, ex
 
 sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) e obsoleto que formata dispositivos e cria sistemas de arquivos para ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
 
-sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
+sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -f /dev/sdb1 -L "etiqueta_dispositivo" (cria sistema de arquivos NTFS com opção --fast e --label acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
 
 dd if=nome_arquivo.iso of=/dev/sdb status=progress && sync (aplicativo converte e copia arquivos, de maneira indireta também grava arquivos .ISO em CD/DVD/pendrive. Graças ao aplicativo sync, a gravação de arquivos no dispositivo é feita de maneira síncrona, por padrão o linux é assíncrono e as gravações são armazenadas em buffer (cache) para depois gravar num dispositivo de armazenamento.
 if: arquivo de entrada de dados (input file); of: arquivo de saida de dados (output file))
