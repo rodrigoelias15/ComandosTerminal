@@ -264,8 +264,7 @@ sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file sys
 
 sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
 
-
-dd if=nome_arquivo.iso of=/dev/sdb status=progress && sync (aplicativo converte e copia arquivos, de maneira indireta também grava arquivos .ISO em CD/DVD/pendrive. Graças ao aplicativo sync, a gravação de arquivos no dispositivo é feita de maneira síncrona, por padrão o linux é assíncrono e as gravações são armazenadas em buffer (cache) para depois gravar num dispositivo de armazenamento.
+dd if=nome_arquivo.iso of=/dev/sdb1 status=progress && sync (aplicativo converte e copia arquivos, de maneira indireta também grava arquivos .ISO em CD/DVD/pendrive. Graças ao aplicativo sync, a gravação de arquivos no dispositivo é feita de maneira síncrona, por padrão o linux é assíncrono e as gravações são armazenadas em buffer (cache) para depois gravar num dispositivo de armazenamento.
 if: arquivo de entrada de dados (input file); of: arquivo de saida de dados (output file))
 
 sudo eject nome_dispositivo (ejetar dispositivo, por exemplo eject /dev/sdc)
@@ -301,6 +300,7 @@ Exemplo do que deve ser adicionado ao texto:
 # partição HD do windows
 UUID="6E2FD13B75546EF3" /media/windowsArq ntfs defaults,uid=1000,umask=001 0 0
 
+Obs: o ultimo número que aparece nos arquivos /dev/sd* (por exemplo /dev/sdb1) é o número da partição do dispositivo, geralmente trabalhamos com partições ao manipular esses arquivos, para saber qual partição escolher, execute comando lsblk
 /=========================================================/
 
 
