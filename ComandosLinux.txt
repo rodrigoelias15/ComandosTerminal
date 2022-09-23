@@ -260,7 +260,7 @@ sudo mount -t ntfs -o uid=rodrigo,gid=rodrigo /dev/sda1 /media/nome_pasta/)
 
 sudo umount nome_dispositivo (desmonta sistema de arquivos de um dispositivo, ex: sudo umount /dev/sdb1)
 
-sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) e obsoleto que formata pendrive para tipo de arquivo ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
+sudo mkfs -t tipo_sistema_arquivos nome_dispositivo (Comando mkfs (make file system) é um aplicativo descontinuado (deprecated) e obsoleto que formata dispositivos e cria sistemas de arquivos para ext4, ntfs, vfat, etc. Ex: sudo mkfs -t vfat /dev/sdb1. Obs: sempre desmonte dispositivo antes de formatá-lo)
 
 sudo mkfs.<type> nome_dispositivo (mkfs.<type> é uma versão moderna do mkfs que possui mais funcionalidades. <type> é o tipo de sistema de arquivos a ser usado, podemos usar vfat, ntfs, ext4, etc. Por ex: sudo mkfs.ntfs -Ff /dev/sdb1 (cria sistema de arquivos NTFS com opção --fast e --Force acionadas). Obs: sempre desmonte dispositivo antes de formatá-lo)
 
