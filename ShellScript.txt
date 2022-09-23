@@ -39,9 +39,19 @@ nome_aplicativo << eof (redirecionamento de entrada, esse tipo de redirecionamen
 
 //========= Script Propriamente Dito ===========//
 
-Deve-se começar todo script com #!/bin/bash (# (sustenido) é usado para comentários, mas a primeira linha é uma exceção porque #! serve para indicar qual shell ou interpretador vai executar o script)
+#!/bin/bash indica qual shell/interpretador vai executar o script (deve-se começar todo script com esse comentário)
 
-Para operações matemáticas maiores e complexas, podemos por exemplo escrever este script:
+# é usado para comentar linhas inteiras
+
+Para comentar em blocos, iniciamos o comentario com : ' (necessário espaço entre dois pontos e aspas simples) e finalizamos com ' como no seguinte exemplo:
+
+: '
+    Este é 
+    um
+    comentario
+'
+
+Para operações matemáticas maiores e complexas, podemos por exemplo escrever:
 ---------------------------------------------
 #!/bin/bash
 var1=5
@@ -127,7 +137,8 @@ Podemos usar os seguintes operadores pré-definidos dentro das comparações if:
 -e (verifica existência (exists) de arquivo ou pasta)
 -d (verifica se é diretório e se existe)
 -f (verifica se é arquivo e se existe)
--z (verifica se variável ou string está vazia (igual a zero))
+-z (verifica se comprimento (length) da variável ou string é zero, ou seja, se está vazia)
+-n (verifica se comprimento (length) da variável ou string é maior que zero)
 -r (verifica se arquivo pode ser lido)
 -w (verifica se arquivo pode ser escrito)
 -x (verifica se arquivo pode ser executado)
@@ -265,14 +276,16 @@ echo "" #para quebrar linha no fim do while
 
 //============= Curiosidades =============//
 
-Para inicializar scripts com o sistema, basta colocar os scripts no diretório /etc/profile.d/, o arquivo de configuração /etc/profile executa todos os arquivos .sh desse diretório na inicialização do sistema.
+Para inicializar scripts com o sistema, basta colocar os scripts no diretório /etc/profile.d/, o arquivo de configuração /etc/profile executa todos os arquivos .sh desse diretório no boot do sistema (script vai ser executado de maneira global, independente do usuário que estiver logado).
 
-Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente, basta que sejam escritas no arquivo de configuração local ~/.bashrc, ele é inicializado toda vez que o bash é carregado interativamente (quando terminal é aberto) e faz referência ao usuário atual (com ou sem login).
-Para salvar aliases, funções e variáveis permanentemente de modo geral, basta escrevê-las no arquivo de configuração global /etc/bash.bashrc
+Arquivo ~/.profile é executado quando feito login no terminal
 
-";" significa fim de linha
+Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o bash é carregado interativamente (quando terminal é aberto) e faz referência ao usuário atual (com ou sem login).
+Para salvar aliases, funções e variáveis de forma permanentemente e global (para todos usuários), basta escrevê-las no arquivo de configuração /etc/bash.bashrc
 
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH, como /usr/local/bin/ ou acrescentar o diretório do arquivo na variável PATH
+
+";" significa fim de linha
 
 //======================================//
 
