@@ -276,14 +276,16 @@ echo "" #para quebrar linha no fim do while
 
 //============= Curiosidades =============//
 
-Para inicializar scripts com o sistema, basta colocar os scripts no diretório /etc/profile.d/, o arquivo de configuração /etc/profile executa todos os arquivos .sh desse diretório no boot do sistema (script vai ser executado de maneira global, independente do usuário que estiver logado).
+Para inicializar scripts com o sistema, basta colocar os scripts ou atalhos com final .sh no diretório /etc/profile.d/, o arquivo de configuração /etc/profile executa todos os scripts desse diretório na inicialização do sistema ou no login de usuário (script vai ser executado de maneira global, independente do usuário que estiver logado).
 
 Arquivo ~/.profile é executado quando feito login no terminal
 
-Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o bash é carregado interativamente (quando terminal é aberto) e faz referência ao usuário atual (com ou sem login).
+Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o terminal é aberto (bash é carregado interativamente), fazendo referência ao usuário atual (com ou sem login).
 Para salvar aliases, funções e variáveis de forma permanentemente e global (para todos usuários), basta escrevê-las no arquivo de configuração /etc/bash.bashrc
 
-Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH, como /usr/local/bin/ ou acrescentar o diretório do arquivo na variável PATH
+Resumindo a execução dos arquivos, arquivo /etc/profile é executado tanto na inicialização do sistema quanto no login de usuário, ~/.profile é executado apenas no login de usuário e ~/.bashrc é executado tanto no login, indiretamente (~/.profile executa ~/.bashrc), quanto na abertura do terminal. 
+
+Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
 
 ";" significa fim de linha
 
