@@ -115,13 +115,11 @@ ip address (verifica ip da máquina)
 
 ip route (rotas disponíveis)
 
-curl endereco_url (abreviação de Client URL, serve para verificar a conectividade da URL)
-
+curl endereco_url (abreviação de Client URL, serve para verificar a conectividade da URL e fazer downloads, possui suporte para diversos protocolos de rede. Exemplos:
 curl -O endereco_url (baixa arquivo com mesmo nome que esta na URL)
+curl -o nome_arquivo endereco_url (baixa arquivo da URL com nome especificado))
 
-curl -o nome_arquivo endereco_url (baixa arquivo da URL com nome especificado)
-
-wget endereco_url (usada para recuperar conteúdos e arquivos de vários servidores na internet)
+wget endereco_url (usada para fazer downloads)
 
 sudo ufw app list (lista as aplicações protegidas pelo firewall)
 
