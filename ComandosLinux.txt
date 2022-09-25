@@ -194,9 +194,9 @@ nome_aplicativo < nome_arquivo (redirecionamento de entrada, quando o conteudo d
 
 nome_aplicativo << eof (redirecionamento de entrada, esse tipo de redirecionamento funciona como o anterior (nome_aplicativo < nome_arquivo), porém não importamos o conteúdo de um arquivo para o aplicativo, nós escrevemos em tempo real o conteudo que queremos redirecionar como entrada. Para salvar e finalizar o conteúdo, escrevemos eof (quer dizer "end of file") na ultima linha e teclamos ENTER. Obs: eof é uma recomendação, podemos substituir eof por outra palavra qualquer)
 
-sudo a2enmod php5.6 (ativa php)
+sudo a2enmod php7.4 (ativa modulo do php (a2enmod = apache2 enable module))
 
-sudo a2dismod php7.2 (desativa o php)
+sudo a2dismod php7.4 (desativa modulo do php (a2dismod = apache2 disenable module))
 
 whereis nome_aplicativo (retorna todos os diretorios de instalação do aplicativo)
 
