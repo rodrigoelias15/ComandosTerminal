@@ -1,22 +1,22 @@
-mkdir nome_pasta (cria uma pasta no diretorio atual, mkdir -p nome_pasta permite criar a pasta e subpastas com um único comando)
+mkdir nome_pasta (cria uma pasta no diretorio atual, mkdir -p nome_pasta1/nome_pasta2 permite criar pastas e subpastas com um único comando)
 
 rmdir nome_pasta (remove pastas vazias)
 
-rm nome_arquivo (remove apenas arquivos, rm -r remove pastas e arquivos de forma recursiva, sem pedir confirmação)
+rm nome_arquivo (remove apenas arquivos, rm -r remove pastas e arquivos de forma recursiva sem pedir confirmação)
 
-rm !(nome_arquivo/nome_diretorio/*.tipoarquivo) (remove arquivos ou diretórios, exceto oque está dentro dos parênteses)
+rm -r !(nome_arquivo_diretorio) (remove arquivos ou diretórios, exceto oque está entre parênteses. Para evitar exclusão de vários arquivos, utilize quantos pipes precisar (sem espaços entre pipe, parenteses e nomes dos arquivos ou diretórios) executando rm -r !(arquivo_diretorio|arquivo_diretorio))
 
 !! (cola e executa ultima linha de comando)
 
-touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outros diretorios, basta digitar o nome do diretorio/nome_arquivo)
+touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outros diretorios, basta digitar o nome do diretorio ou arquivo)
 
 cat nome_arquivo (exibe o conteudo em texto do arquivo)
 
 mv nome_arquivo nome_diretorio_destino OU mv nome_arquivo novo_nome_arquivo (serve para renomear arquivos ou mover arquivos e diretorios, pode ser acompanhado de -i, pedindo confirmação caso exista arquivo ou pasta de mesmo nome no diretorio destino, ou -b que faz copia de segurança se arquivo ou pasta ja existir no destino)
 
-cp -r nome_arquivo/nome_pasta nome_nova_copia (copia arquivo ou pasta)
+cp -r nome_arquivo_pasta nome_copia (copia arquivo ou pasta)
 
-ln -rs nome_arquivo/nome_diretorio nome_atalho (cria link simbólico ou atalho de arquivos/diretorios. Obs: se usar apenas a flag -s, crie links de um arquivo/diretorio para o diretorio atual do terminal, caso contrário o link quebra, no entanto se usarmos -rs podemos criar atalhos para qualquer diretório, exemplo: ln -rs "/home/rodrigo/Komodo-IDE-12.0.1/bin/komodo" /usr/local/bin/komodo)
+ln -rs nome_arquivo_diretorio nome_atalho (cria link simbólico ou atalho de arquivos/diretorios. Obs: se usar apenas a flag -s, crie links de um arquivo/diretorio para o diretorio atual do terminal, caso contrário o link quebra, no entanto se usarmos -rs podemos criar atalhos para qualquer diretório, exemplo: ln -rs "/home/rodrigo/Komodo-IDE-12.0.1/bin/komodo" /usr/local/bin/komodo)
 
 ln nome_arquivo nome_atalho (cria hardlinks ou links absolutos para o arquivo (não é permitido para diretorios), usando flag -P obtemos o mesmo resultado)
 
