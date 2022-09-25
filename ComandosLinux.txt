@@ -1,4 +1,4 @@
-mkdir nome_pasta (cria uma pasta no diretorio atual)
+mkdir nome_pasta (cria uma pasta no diretorio atual, mkdir -p nome_pasta permite criar a pasta e subpastas com um único comando)
 
 rmdir nome_pasta (remove pastas vazias)
 
