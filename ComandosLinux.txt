@@ -68,7 +68,7 @@ apt-mark showhold (lista de aplicativos que estão marcados para não serem atua
 
 sudo apt-mark unhold nome_aplicativo (volta a atualizar normalmente o aplicativo)
 
-sudo apt autoremove && sudo apt autoclean (autoremove desinstala bibliotecas que precisaram ser executadas poucas vezes para a execucao de outros programas e já não são mais necessárias, autoclean para remover arquivos .deb inúteis mas ainda mantem algum cache caso precise baixar de novo ser mais rápido)
+sudo apt autoremove && sudo apt autoclean (apt autoremove remove bibliotecas que dependiam ser instaladas para instalação de outros aplicativos e já não são mais necessárias, apt autoclean remove arquivos .deb inúteis ou obsoletos e apt clean apaga o cache contido em /var/cache/apt/archives (onde ficam contidos os programas baixados pelo apt update))
 
 sudo dpkg -i <arquivo.deb> ou sudo dpkg -i <*.deb> (para instalar todos arquivos .deb na mesma pasta)
 
