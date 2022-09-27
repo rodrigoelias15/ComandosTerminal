@@ -10,7 +10,7 @@ rm -r !(nome_arquivo_diretorio) (remove arquivos ou diretórios, exceto oque est
 
 touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outros diretorios, basta digitar o nome do diretorio ou arquivo)
 
-cat nome_arquivo (exibe o conteudo em texto do arquivo)
+cat nome_arquivo1 nome_arquivo2 (exibe o conteudo em texto se usamos um unico arquivo, se usado dois ou mais eles são concatenados)
 
 mv nome_arquivo nome_diretorio_destino OU mv nome_arquivo novo_nome_arquivo (serve para renomear arquivos ou mover arquivos e diretorios, pode ser acompanhado de -i, pedindo confirmação caso exista arquivo ou pasta de mesmo nome no diretorio destino, ou -b que faz copia de segurança se arquivo ou pasta ja existir no destino)
 
