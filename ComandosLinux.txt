@@ -28,6 +28,8 @@ cd .. (retorna um nível acima do diretório atual)
 
 pwd (exibe caminho do diretorio)
 
+sort nome_arquivo (coloca linhas do texto em ordem alfabética)
+
 ls (exibe arquivos e pastas do diretorio, exemplo: ls -la exibe todos os arquivos (inclusive ocultos) do diretório atual e detalhes como níveis de permissão (usuario dono/proprietario, grupo do usuário dono/proprietario e outros usuarios respectivamente), número de hardlinks (links absolutos que apontam para inode do arquivo), nome do usuário dono/proprietario, nome do grupo do usuario, data de modificação e nome do arquivo/pasta respecivamente. Para ver inodes execute ls -i, para números mais compreensíveis, execute ls -h)
 
 namei -lx nome_diretorio (exibe permissões do diretorio)
@@ -339,7 +341,7 @@ Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo
 
 /etc/group (exibe de maneira detalhada id e informações de grupos, inclusive usuários que fazem parte do grupo)
 
-Inodes ou nó-i, são estruturas responsáveis por conter informações básicas sobre arquivos e pastas, como permissões de acesso, identificação dos donos dos arquivos, data e hora do último acesso e alterações, tamanho e ponteiros para o arquivo em si. Cada arquivo/diretorio no kernel é identificado como um número de nó.
+Inodes ou nó-i, são estruturas responsáveis por conter informações básicas sobre arquivos e pastas, como permissões de acesso, identificação dos donos dos arquivos, data e hora do último acesso e alterações, tamanho e ponteiros para o arquivo em si. Cada arquivo/diretorio no kernel é identificado como um número de nó
 
 Cores de arquivos/pastas da saida ls (não são padrões em todos os sistemas):
 Verde: arquivo executável

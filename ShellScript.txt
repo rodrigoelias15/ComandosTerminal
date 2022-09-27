@@ -2,7 +2,7 @@ bash (cria um novo bash dentro do terminal atual)
 
 variavel="conteudo" (cria variavel no bash local, sem espaços entre o conteudo e sinal de "=", para que o linux não interprete como um comando)
 
-variavel=`comando` (insere a saída do comando na variável, basta colocá-lo entre crases. Outra forma de escrever é usando o subshell dessa forma: variavel=$(comando))
+variavel=`comando` (insere a saída do comando na variável, basta colocá-lo entre crases. Outra forma de escrever é usando o subshell, dessa forma: variavel=$(comando))
 
 echo $variavel (exibe conteúdo da variável)
 
@@ -20,7 +20,7 @@ echo ${variavel_array[i]} (imprime elemento de índice "i" do array)
 
 variavel=$[num1 * num2] (operações matemáticas com números inteiros. Podem ser usado diferentes operadores como *, /, +, -. Ex: var2=$[$var1 * (5 - 3)]
 
-unset (deleta variavel criada localmente)
+unset (deleta variavel criada localmente, aconselhável usar este comando no final de scripts que se tenha criado variáveis)
 
 unset ${variavel_array[i]} (deleta elemento de indice "i")
 
@@ -28,7 +28,7 @@ nome_funcao(){ comandos; } (cria uma função no bash, é necessário soltar esp
 
 alias apelido_criado="comando" (cria apelidos no bash, sem espaços entre o conteudo (comando) e sinal de "=")
 
-unalias apelido_criado (apaga apelido criado)
+unalias apelido_criado (apaga apelido criado, aconselhável usar este comando no final de scripts que se tenha criado aliases)
 
 read valor_digitado (comando usado para entrada de valores pelo teclado, ex: read -p "Digite valor para variavel: " valor_digitado, valor_digitado precisa de espaço depois das aspas duplas)
 
@@ -288,6 +288,12 @@ Resumindo a execução dos arquivos, na iniciallização do sistema apenas o arq
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
 
 ";" significa fim de linha
+
+Shell é interpretador de linha de comando, ele provê uma interface entre usuario e kernel, e executa programas dando a resposta em forma de saídas. Um tipo de shell bastante popular é o bash (Bourne Again SHell), usado na maioria das distribuições Linux
+
+Comando dot(.) ou source executam arquivos no contexto atual (interativo) do bash. Quando executamos um arquivo da forma ./nome_arquivo, ele é executado em subshell, mas ao executar com dot ou source da forma . nome_arquivo OU source nome_arquivo, ele é executado no contexto atual do bash, fazendo com que por exemplo variaveis criadas ou cd (change directory) sejam reconhecidas pelo bash atual.
+
+Subshells são shells filhos do shell atual, eles nos retornam a saída de certos comandos, podemos usar $(comandos) ou criar um subshell executando bash; shell scripts são executados em subshells por padrão.
 
 //======================================//
 
