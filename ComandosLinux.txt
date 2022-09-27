@@ -90,7 +90,8 @@ sed 's/^/nova_palavra' arquivo_Texto (adiciona nova expressão no início de cad
 sed 's/$/nova_palavra' arquivo_Texto (adiciona nova expressão no final de cada linha)
 
 variavel="conteudo" (sem espaços entre "=" e o conteudo, cria variaveis no terminal como no exemplo: caminho="/home/rodrigo/Downloads"
-Nesse caso a variável $caminho recebe o caminho especificado, mas ela é temporária e só existe localmente no bash, para se transformar em variável local permanente, acesse o arquivo /etc/bash.bashrc e digite no fim do arquivo: export caminho="/home/rodrigo/Downloads")
+Nesse caso a variável $caminho recebe o caminho especificado, mas ela é temporária e só existe localmente no bash, para se transformar em variável local permanente, acesse o arquivo /etc/bash.bashrc ou ~/.bashrc, e digite no fim do arquivo: export caminho="/home/rodrigo/Downloads").
+O comando export permite que a variável seja reconhecida nos bashes filhos também.
 Exemplo: export PATH="$PATH:/home/rodrigo/Komodo-IDE-12.0.1/bin"
 
 variavel=`comando` (insere a saída do comando na variável, para isto basta colocá-lo entre crases. Outra forma de escrever é usando o subshell desta forma: variavel=$(comando))
