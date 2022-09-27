@@ -6,7 +6,7 @@ variavel=`comando` (insere a saída do comando na variável, basta colocá-lo en
 
 echo $variavel (exibe conteúdo da variável)
 
-echo "mensagem" (comando para saída de mensagens, ex: echo -n $PATH, exibe conteúdo da variável PATH sem quebrar linha)
+echo -e "mensagem" (comando para saída de mensagens, -e ativa backslash escape para interpretar comandos)
 
 export variavel (variavel global e temporaria, é reconhecida em qualquer terminal e bash)
 
