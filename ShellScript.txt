@@ -1,4 +1,4 @@
-bash (cria um novo bash dentro do terminal atual)
+bash (cria um bash filho no terminal)
 
 variavel="conteudo" (cria variavel no bash local, sem espaços entre o conteudo e sinal de "=", para que o linux não interprete como um comando)
 
@@ -8,7 +8,7 @@ echo $variavel (exibe conteúdo da variável)
 
 echo -e "mensagem" (comando para saída de mensagens, -e ativa backslash escape para interpretar comandos)
 
-export variavel (variavel global e temporaria, é reconhecida em qualquer terminal e bash)
+export variavel (export faz variavel ser reconhecida em subshells e subprocessos)
 
 variavel_array=(elem1 elem2 elem3) (criação de array com respectivos elementos, separados por espaço)
 
@@ -280,7 +280,7 @@ Para inicializar scripts com o sistema, basta colocar os scripts ou atalhos com 
 
 Arquivo ~/.profile é executado quando feito login no terminal
 
-Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o terminal é aberto (bash é carregado interativamente), fazendo referência ao usuário atual (com ou sem login).
+Aliases, funções e variáveis específicas para cada usuário do sistema podem ser salvas permanentemente se escritas no arquivo de configuração ~/.bashrc, ele é inicializado toda vez que o terminal é aberto, fazendo referência ao usuário atual (com ou sem login).
 Para salvar aliases, funções e variáveis de forma permanentemente e global (para todos usuários), basta escrevê-las no arquivo de configuração /etc/bash.bashrc
 
 Resumindo a execução dos arquivos, na iniciallização do sistema apenas o arquivo /etc/profile é executado; ao abrir o terminal apenas o ~/.bashrc é executado e ao fazer login do usuario, os arquivos /etc/profile e ~/.profile são executados e o arquivo ~/.bashrc é executado indiretamente pelo ~./profile; 
@@ -291,9 +291,11 @@ Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los pa
 
 Shell é interpretador de linha de comando, ele provê uma interface entre usuario e kernel, e executa programas dando a resposta em forma de saídas. Um tipo de shell bastante popular é o bash (Bourne Again SHell), usado na maioria das distribuições Linux
 
-Comando dot(.) ou source executam arquivos no contexto atual (interativo) do bash. Quando executamos um arquivo da forma ./nome_arquivo, ele é executado em subshell, mas ao executar com dot ou source da forma . nome_arquivo OU source nome_arquivo, ele é executado no contexto atual do bash, fazendo com que por exemplo variaveis criadas ou cd (change directory) sejam reconhecidas pelo bash atual.
+Comando dot(.) ou source executam arquivos no contexto atual do bash. Quando executamos um arquivo da forma ./nome_arquivo, ele é executado em subshell, mas ao executar com dot ou source da forma . nome_arquivo OU source nome_arquivo, ele é executado no contexto atual do bash, fazendo com que por exemplo variaveis criadas ou cd (change directory) sejam reconhecidas pelo bash atual.
 
 Subshells são shells filhos do shell atual, eles nos retornam a saída de certos comandos, podemos usar $(comandos) ou criar um subshell executando bash; shell scripts são executados em subshells por padrão.
+
+Shell interativo é o proprio terminal, podemos interagir com ele através de comandos e receber saidas. Shell não interativo é o shell script, ele pode simular interação se houver por exemplo, o comando read para que digitemos algo na execução do programa.
 
 //======================================//
 
