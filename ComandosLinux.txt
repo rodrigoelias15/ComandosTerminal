@@ -315,7 +315,7 @@ CTRL + R = buscar comando usado no terminal
 
 CTRL + U = apaga texto a partir do cursor até inicio da linha
 
-CTRL + D = mesma função do comando exit (linha do terminal precisa estar vazia)
+CTRL + D = mesma função do comando exit/logout (linha do terminal precisa estar vazia)
 
 stdout, stdin e stderr (representa o fluxo de saida de dados (standard output), fluxo de entrada de dados (standard input) e exibição de erro (standard error), respectivamente)
 
@@ -323,7 +323,9 @@ Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los pa
 
 sudo su (entra em modo root no diretorio atual)
 
-sudo -i OU su - (também entram em modo root, "sudo -" exige senha)
+sudo -i -u nome_usuario (similar ao "sudo login", se executarmos "sudo -i" realiza login como usuário root, porém somos direcionados para /root/)
+
+su - (similar ao "sudo login", podemos executar "su - nome_usuario" para logar ao usuário especificado. Se não especificarmos o usuario, ele fará login como root pedindo senha)
 
 ffmpeg -ss 0 -t 5 -i audio-original.mp3 audio-cortado.mp3 (cortar mp3)
 
