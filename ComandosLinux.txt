@@ -12,6 +12,8 @@ touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outr
 
 cat nome_arquivo1 nome_arquivo2 (exibe o conteudo em texto se usamos um unico arquivo, se usado dois ou mais eles são concatenados)
 
+iconv (programa converte texto codificado para outro, ex: iconv -t ASCII//TRANSLIT arquivo.txt (aplicativo codifica arquivo.txt para transliterá-lo (mapeia e converte caracteres de um idioma para outros caracteres correspondentes ou parecidos), retirando acentuação por exemplo))
+
 mv nome_arquivo nome_diretorio_destino OU mv nome_arquivo novo_nome_arquivo (serve para renomear arquivos ou mover arquivos e diretorios, pode ser acompanhado de -i, pedindo confirmação caso exista arquivo ou pasta de mesmo nome no diretorio destino, ou -b que faz copia de segurança se arquivo ou pasta ja existir no destino)
 
 cp -r nome_arquivo_pasta nome_copia (copia arquivo ou pasta)

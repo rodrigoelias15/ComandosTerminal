@@ -174,7 +174,7 @@ done
 
 ----------------------------------------
 
-Para comparações de strings, usamos comparadores convencionais como <, >, = ou !=. Para comparação de strings como maior que ou menor que, o bash considera a ordem alfabética das strings, por exemplo: Fabio > Rodrigo (F vem antes que R em ordem alfabética)
+Para comparações de strings, usamos comparadores convencionais como <, >, == ou !=. Para comparação de strings como maior que ou menor que, o bash considera a ordem alfabética ou lexicográfica das strings, por exemplo: Fabio > Rodrigo (F vem antes que R em ordem alfabética)
 
 Exemplos de comparações de strings:
 -----------------------------------------
