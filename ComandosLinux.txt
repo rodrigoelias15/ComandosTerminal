@@ -160,7 +160,7 @@ su nome_usuario (similar ao "sudo login", porém o usuario logado se mantém no 
 
 sudo su (entra no modo root sem pedir senha e mantém diretorio atual, "sudo su -" redireciona para home)
 
-sudo -i -u nome_usuario (mais recomendável por permitir o login de qualquer usuario sem pedir senha, portanto não fornece privilégios administrativos (exceto se for usuario root). Se executarmos "sudo -i", realiza login como root e redireciona para home)
+sudo -i -u nome_usuario (mais recomendável por permitir o login de qualquer usuario sem pedir senha, portanto não fornece privilégios administrativos (exceto se for usuario root). Se executarmos "sudo -i", realiza login como root e redireciona para home. -i, --login; -u, --user)
 
 logout (realiza logout do usuario atual)
 
