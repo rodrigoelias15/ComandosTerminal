@@ -136,9 +136,11 @@ find diretorio_pesquisa -iname termo_pesquisa (faz pesquisa em determinado diret
 
 locate -ib termo_pesquisa (Localiza arquivos no sistema usando a base de dados contida em updatedb (para atualizar o banco execute sudo updatedb), -i (ignore-case) ignora caixa alta/baixa e -b (basename) refina a pesquisa buscando apenas arquivos que contenham o termo da pesquisa em seu nome, ignorando diretorios que contenham os termos. Para saber apenas quantidade de itens encontrados, execute locate -c termo_pesquisa)
 
-sudo login (realiza login com outro usuario)
+id (exibe id de usuário atual e dos grupos que ele faz parte)
 
-logout (realiza logout do usuario atual (quando não é o usuario principal))
+id nome_usuario (exibe id do usuario especificado e dos grupos que ele faz parte)
+
+whoami (exibe usuário atual)
 
 sudo adduser novo_usuario (adiciona novo usuario e grupo de mesmo nome (grupo primário) ao sistema)
 
@@ -151,6 +153,20 @@ sudo deluser nome_usuario grupo (deleta usuario do grupo especificado)
 sudo delgroup nome_grupo (deleta grupo do sistema)
 
 sudo addgroup nome_novo_grupo (adiciona novo grupo ao sistema)
+
+sudo login (realiza login de outro usuario do sistema (pedirá senha ao se conectar), pode-se executar diretamente "sudo login nome_usuario")
+
+su - nome_usuario (similar ao "sudo login", se executarmos "su -" será feito login como root. Para qualquer usuário, é necessário informar senha)
+
+sudo -i -u nome_usuario (faz login do usuario especificado sem pedir senha, portanto, sem fornecer privilégios administrativos (exceto o usuario root). Se executarmos "sudo -i", realiza login como root)
+
+sudo su (entra em modo root no diretorio atual sem pedir senha)
+
+logout (realiza logout do usuario atual)
+
+passwd (modifica senha do usuario atual)
+
+sudo passwd root (modifica ou cria uma nova senha para usuario root)
 
 sudo chown -R usuario_proprietario:grupo_usuario_proprietario nome_diretorio/nome_arquivo (-R (recursivamente) significa de dentro para fora; usuario_proprietario seria o novo usuario dono do arquivo/pasta, seguido do grupo do usuario proprietario. Pode ser escrito também como: sudo chown -R usuario_proprietario.grupo_usuario_proprietario nome_diretorio/nome_arquivo)
 
@@ -221,23 +237,13 @@ zcat nome_arquivo.gz (descompacta arquivos .gz)
 
 history (histório de comandos do terminal, history -c limpa o histórico)
 
-neofetch (exibe informações e versão da distro linux)
-
-id (exibe id de usuário atual e dos grupos que ele faz parte)
-
-id nome_usuario (exibe id do usuario especificado e dos grupos que ele faz parte)
-
-whoami (exibe usuário atual)
-
 hostname (exibe hostname da máquina)
 
 hostnamectl set-hostname novo_nome_hostname (modifica nome do hostname)
 
 uname (visualizar informações do sistema, exemplo: uname -r exibe versão do kernel)
 
-passwd (modifica senha do usuario atual)
-
-sudo passwd root (desbloqueia e cria nova senha para usuario root)
+neofetch (exibe informações e versão da distro linux)
 
 bc (calculadora do bash que possui linguagem de programação. Obs: A variavel scale determina a precisão de casas decimais para cada resultado de divisão, como quando queremos 2 casas decimais: scale=2
 O comando também pode ser usado dessa forma, sendo a variável opcional (apenas para divisões): echo "variavel; operacao_matematica" | bc)
@@ -320,12 +326,6 @@ CTRL + D = mesma função do comando exit/logout (linha do terminal precisa esta
 stdout, stdin e stderr (representa o fluxo de saida de dados (standard output), fluxo de entrada de dados (standard input) e exibição de erro (standard error), respectivamente)
 
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
-
-sudo su (entra em modo root no diretorio atual)
-
-sudo -i -u nome_usuario (similar ao "sudo login", se executarmos "sudo -i" realiza login como usuário root, porém somos direcionados para /root/)
-
-su - (similar ao "sudo login", podemos executar "su - nome_usuario" para logar ao usuário especificado. Se não especificarmos o usuario, ele fará login como root pedindo senha)
 
 ffmpeg -ss 0 -t 5 -i audio-original.mp3 audio-cortado.mp3 (cortar mp3)
 
