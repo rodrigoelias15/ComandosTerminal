@@ -156,11 +156,11 @@ sudo addgroup nome_novo_grupo (adiciona novo grupo ao sistema)
 
 sudo login (realiza login de outro usuario do sistema (pedirá senha ao se conectar), pode-se executar diretamente "sudo login nome_usuario")
 
-su nome_usuario (similar ao "sudo login", porém o usuario logado se mantém no diretório atual; se executado apenas "su", será feito login como root. Hífen redireciona para último diretório visitado, entretanto se executarmos "sudo -" ou "sudo - nome_usuario", usuário é redirecionado para home por ser a primeira sessão)
-
-sudo -i -u nome_usuario (faz login do usuario especificado sem pedir senha, portanto sem fornecer privilégios administrativos (exceto o usuario root). Se executarmos "sudo -i", realiza login como root e redireciona para home)
+su nome_usuario (similar ao "sudo login", porém o usuario logado se mantém no diretório atual; se executado apenas "su", será feito login como root. Hífen redireciona para último diretório visitado, entretanto se executarmos "su -" ou "su - nome_usuario", usuário é redirecionado para home já que é a primeira sessão)
 
 sudo su (entra no modo root sem pedir senha e mantém diretorio atual, "sudo su -" redireciona para home)
+
+sudo -i -u nome_usuario (mais recomendável por permitir o login de qualquer usuario sem pedir senha, portanto não fornece privilégios administrativos (exceto se for usuario root). Se executarmos "sudo -i", realiza login como root e redireciona para home)
 
 logout (realiza logout do usuario atual)
 
