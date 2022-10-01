@@ -10,6 +10,9 @@ rm -r !(nome_arquivo_diretorio) (remove arquivos ou diretórios, exceto oque est
 
 touch nome_arquivo (cria arquivo no diretorio atual, pode criar arquivos em outros diretorios, basta digitar o nome do diretorio ou arquivo)
 
+gnome-<aplicativo> (comando executa vários programas do sistema operacional como gnome-calculator, gnome-screenshot, gnome-calendar, gnome-session, gnome-terminal, gnome-session-quit, gnome-system-monitor e muitos outros.
+Para exibir as opções basta digitar gnome- e teclar TAB duas vezes para que as opções apareçam) 
+
 cat nome_arquivo1 nome_arquivo2 (exibe o conteudo em texto se usamos um unico arquivo, se usado dois ou mais eles são concatenados)
 
 iconv (programa converte texto codificado para outro, ex: iconv -t ASCII//TRANSLIT arquivo.txt (aplicativo codifica arquivo.txt para transliterá-lo (mapeia e converte caracteres de um idioma para outros caracteres correspondentes ou parecidos), retirando acentuação por exemplo))
