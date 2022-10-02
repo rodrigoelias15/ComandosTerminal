@@ -1,0 +1,31 @@
+sudo -i -u usuario (conecta ao usuario para que depois acesse o banco de dados)
+
+sudo adduser usuario (cria novo usuario do sistema)
+
+createdb database (cria banco de dados (primeiro banco precisa ter mesmo nome do usuario))
+
+createuser --interactive (cria usuario que vai se conectar ao banco de dados)
+
+pg_dump -U dbuser database  > arquivo.pgsql (exporta arquivo relacionado ao banco de dados. -U, --username)
+
+psql (entra no console do postgreSQL)
+
+//================ Comandos do console ==================//
+
+\d (exibe todas as tabelas contidas no banco de dados, com proprietario e schema pertencentes)
+
+\d nome_tabela (Descreve atributos e propriedades da tabela especifica)
+
+\dt (exibe tabelas principais do banco)
+
+\h nome_comando (exibe instruções sobre o comando específico do pgsql)
+
+\h * (exibe instruções sobre todos os comandos do pgsql)
+
+\q (sai do console psql)
+
+\password (altera senha do banco de dados atual)
+
+\conninfo (exibe informações da conexão atual)
+
+//=====================================================//
