@@ -6,7 +6,12 @@ createdb database (cria banco de dados (primeiro banco precisa ter mesmo nome do
 
 createuser --interactive (cria usuario que vai se conectar ao banco de dados)
 
-pg_dump -U rodrigo -d rodrigo -n public  -h localhost -p 5432 -Fc > arquivoDump (exporta arquivo de banco de dados especificado no comando. -U, --username; -n, --schema; -d, --dbname; -h, --host; -p, --port; -Fc, --format=c (custom); -f, --file)
+pg_dump -U nome_usuarioBD -d nome_bancoDados -n nome_schema  -h nome_host -p numero_porta -Fc > nome_arquivoDump (exporta arquivo de banco de dados especificado no comando. -U, --username; -n, --schema; -d, --dbname; -h, --host; -p, --port; -Fc, --format=c (custom); -f, --file)
+
+pg_restore -U nome_usuarioBD -d nome_bancoDados -h nome_host -p numero_porta -Fc nome_arquivoDump (importa arquivo para o banco de dados especificado. Obs: para importar arquivo não usamos flag alguma)
+
+/usr/lib/postgresql/12/bin/pg_restore --verbose --host=ec2-54-147-36-107.compute-1.amazonaws.com --port=5432 --username=ooxezmvcrmvkvv --format=c --dbname=dft8q41bo3dph8 /home/rodrigo/dump2
+
 
 psql (entra no console do postgreSQL)
 
