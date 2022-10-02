@@ -6,7 +6,7 @@ createdb database (cria banco de dados (primeiro banco precisa ter mesmo nome do
 
 createuser --interactive (cria usuario que vai se conectar ao banco de dados)
 
-pg_dump -U dbuser database  > arquivo.pgsql (exporta arquivo relacionado ao banco de dados. -U, --username)
+pg_dump -U rodrigo -d rodrigo -n public  -h localhost -p 5432 -Fc > arquivoDump (exporta arquivo de banco de dados especificado no comando. -U, --username; -n, --schema; -d, --dbname; -h, --host; -p, --port; -Fc, --format=c (custom); -f, --file)
 
 psql (entra no console do postgreSQL)
 
