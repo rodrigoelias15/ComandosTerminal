@@ -12,7 +12,6 @@ pg_restore -U nome_usuarioBD -d nome_bancoDados -h nome_host -p numero_porta -Fc
 
 /usr/lib/postgresql/12/bin/pg_restore --verbose --host=ec2-54-147-36-107.compute-1.amazonaws.com --port=5432 --username=ooxezmvcrmvkvv --format=c --dbname=dft8q41bo3dph8 /home/rodrigo/dump2
 
-
 psql (entra no console do postgreSQL)
 
 //================ Comandos do console ==================//
