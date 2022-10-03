@@ -107,8 +107,6 @@ PATH=$(echo "$PATH" | sed 's/:\/home\/usuario\/bin//') (remove caminho da variá
 
 env | grep "variavel" (busca variáveis ambiente salvas)
 
-OBS: Olhar arquivo ShellScript.txt para se aprofundar mais sobre scripts shell, variáveis, etc.
-
 alias nome_apelido="comando" (salva atalhos ou apelidos para comandos do terminal, mas salva temporariamente. Para salvar localmente e de forma permanentemente o apelido, basta acessar o arquivo ~/.bashrc e digitar na ultima linha o comando apresentado. Comando compgen -c exibe os alias existentes)
 
 telnet endereco_ip num_porta (serve para realizar conexões remotas com outras máquinas)
@@ -306,7 +304,7 @@ Exemplo do que deve ser adicionado ao texto:
 UUID="6E2FD13B75546EF3" /media/windowsArq ntfs defaults,uid=1000 0 0
 
 Acrescentando uid=id_usuario ao /etc/fstab permite que ao deletar um arquivo/pasta, a partição crie uma lixeira automaticamente (.Trash-<id_usuario>, por exemplo .Trash-1000/) para que nada seja deletado permanentemente, ao mesmo tempo que torna o usuario passado como id proprietario da partição.
-Se desejar alterar as permissões de usuario, grupo e outros usuários na partição montada, pode-se acrescentar o parâmetro umask junto ao uid. O Linux tem por padrão fornecer para novos arquivos permissões 0666 e para pastas 0777 (sem contar com o valor de umask).
+Se desejar alterar as permissões de usuario, grupo e outros usuários na partição montada, pode-se acrescentar o parâmetro umask junto ao uid. O Linux tem por padrão fornecer para novos arquivos permissões 0666 e para pastas 0777 (sem contar com o valor atual de umask (padrão 0002)).
 Neste caso em que a partição está iniciando com o sistema, pode-se acrescentar o parametro umask junto ao uid para que seu valor seja subtraido das permissões originais, se na partição NTFS os arquivos e pastas tem permissões 0777, o valor de umask é subtraído das permissões, por exemplo umask=122 deixa as permissões como: 0777 - 122 = 0655, ou seja, os arquivos agora tem permissões de leitura e escrita para o usuario proprietario, e leitura e execução para o grupo do usuario proprietário e outros usuários.
 Como o comando umask tem valor padrão 0002, ao criar arquivos/pastas no sistema as permissões começam com 0664.
 
