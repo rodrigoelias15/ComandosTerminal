@@ -324,6 +324,9 @@ CTRL + U = apaga texto a partir do cursor até inicio da linha
 
 CTRL + D = mesma função do comando exit/logout (linha do terminal precisa estar vazia)
 
+Às vezes precisamos especificar intervalos como por exemplo se num diretório queremos deletar os arquivos file1, file2, até file30, então podemos escrever: rm file{1..30}; outro exemplo pode ser criação de pastas: mkdir pasta{A..J}, em que serão criadas pastaA, pastaB..pastaJ.
+A sintaxe consiste em abrir chaves com valores de inicio e fim, separados por dois pontos.
+
 stdout, stdin e stderr (representa o fluxo de saida de dados (standard output), fluxo de entrada de dados (standard input) e exibição de erro (standard error), respectivamente)
 
 Para acessar arquivos ou scripts de qualquer local do sistema, basta move-los para algum diretório listado na variável PATH ou criar um link simbólico (atalho) para um desses diretórios (mais recomendado), como /usr/local/bin/ por exemplo, ou então acrescentar o diretório do arquivo escolhido na variável PATH
