@@ -1,4 +1,3 @@
-//======== Comandos Git Bash ==========//
 
 git config user.name "Nome" (configura nome do programador para o atual projeto)
 
@@ -119,7 +118,7 @@ git commit --amend -m "mensagem" (modifica mensagem do commit mais recente)
 git rebase -i <hash_Commit>/<tag> (será feito um rebase, portanto abrirá editor de texto VIM com os commits mais recentes ao commit especificado, para alterar a mensagem do commit escrito no editor de texto, substitua a palavra PICK por reword, pressione ESC e digite ':wq'. Em seguida abrirá um editor de texto para modificar a mensagem. Flag -i significa "interactive")
 
 
-//======== Comandos Git Flow ==========//
+//============ Comandos Git Flow ===============//
 
 git flow init (inicia novo repositório usando gitflow)
 
@@ -136,29 +135,7 @@ git flow hotfix start <branch_number> (cria branch local para consertar código 
 git flow hotfix finish <branch_number> (realiza merge com a branch master e apaga hotfix do projeto)
 
 
-//========= Comandos gerais para terminal bash (linux) ==========//
-
-echo "Mensagem" >> <file> (cria arquivo de texto com conteúdo da "Mensagem")
-
-echo "arquivos que não irão para área de staging" >> .gitignore  (cria arquivo que lista os arquivos que não serão commitados)
-
-touch <file> (cria arquivo no diretório atual)
-
-ls (visualiza arquivos do diretorio) OU ls -a (visualiza arquivos ocultos tbm)
-
-cat <file> (exibe conteudo do arquivo de texto no terminal)
-
-rm <file> (remove arquivo pelo terminal, para que essa modificação possa ser rastreada depois)
-
-vim <file> OU nano <file> (abre arquivo com editor VIM ou editor nano respectivamente)
-
-//=========== Observações =========//
-
-O Github pede o Token Access ao invés da senha, crie o Token Access no GitHub no menu Settings/Developer Settings e marque todas as opções que contém "repo" em "Select Scopes".
-
-//================================//
-
-Comandos do editor VIM:
+//================== Comandos do editor VIM =======================//
 
 O editor vim possui três modos: visual, inserção e de comando.
 Ao abrirmos o vim, ele é iniciado em modo de comando, para entrar em modo de inserção, teclamos "i" para realizar alterações e ESC para sair; para entrarmos em modo visual teclamos "v" e ESC para sair.
@@ -175,3 +152,8 @@ Alguns comandos:
 :redo (refaz alteração)
 
 No modo inserção o texto é selecionado com as teclas direcionais, teclamos "y" (yank ou puxão) para copiar texto e "p" (paste) para colar.
+
+
+//================== Observações ==================//
+
+O Github pede o Token Access ao invés da senha, crie o Token Access no GitHub no menu Settings/Developer Settings e marque todas as opções que contém "repo" em "Select Scopes".
