@@ -75,7 +75,7 @@ apt-mark showhold (lista de aplicativos que estão marcados para não serem atua
 
 sudo apt-mark unhold nome_aplicativo (volta a atualizar normalmente o aplicativo)
 
-sudo apt autoremove && sudo apt autoclean (apt autoremove remove bibliotecas que dependiam ser instaladas para instalação de outros aplicativos e já não são mais necessárias, apt autoclean remove arquivos .deb inúteis ou obsoletos e apt clean apaga o cache contido em /var/cache/apt/archives (onde ficam contidos os programas baixados pelo apt update))
+sudo apt autoremove && sudo apt autoclean (apt autoremove remove bibliotecas que dependiam ser instaladas para instalação de outros aplicativos e já não são mais necessárias, apt autoclean remove arquivos .deb inúteis ou obsoletos do repositorio local e apt clean apaga o cache contido em /var/cache/apt/archives (onde ficam contidos os programas baixados pelo apt update))
 
 sudo dpkg -i <arquivo.deb> ou sudo dpkg -i <*.deb> (para instalar todos arquivos .deb na mesma pasta)
 
@@ -283,7 +283,9 @@ sudo eject nome_dispositivo (ejetar dispositivo, por exemplo eject /dev/sdc)
 
 sudo ntfsfix nome_dispositivo (serve para corrigir dispositivos ntfs, para obtê-lo basta instalar o aplicativo ntfs-3g)
 
-df -h (df (disk free) é usado para ver espaço de armazenamento nas unidades, use -h (significa --human-readable) para deixar valores mais compreensíveis)
+df -h (df (disk free) é usado para ver espaço de armazenamento nas unidades. -h, --human-readable (deixa valores mais compreensíveis))
+
+du -sh nome_diretorio (estima tamanho usado do diretorio. -s, --summarize (mostra somente resultado final de espaço); -h, --human-readable)
 
 Para deixar uma partição montada automaticamente, faça:
 $ sudo mkdir /media/nome_pasta (cria pasta da partição dentro da pasta /media)
