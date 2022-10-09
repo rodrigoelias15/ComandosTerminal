@@ -6,6 +6,8 @@ git config user.email "Email" (configura email do programador para o atual proje
 git config --global user.name "Nome" (configura nome do programador para todo e qualquer projeto desenvolvido no computador)
 
 git config --global user.email "Email" (configura email do programador para todo e qualquer projeto desenvolvido no computador)
+ 
+git config --global core.editor "vim" (altera editor de texto padrão do git)
 
 git config --global credential.helper store (salva usuário e senha do github em arquivo de texto local, 'store' para salvá-os permanentemente ou 'cache' para salvar periodicamente)
 
@@ -115,7 +117,7 @@ git remote -v (retorna URL do repositório remoto, -v é abreviação de --verbo
 
 git commit --amend -m "mensagem" (modifica mensagem do commit mais recente)
 
-git rebase -i <hash_Commit>/<tag> (será feito um rebase, portanto abrirá editor de texto VIM com os commits mais recentes ao commit especificado, para alterar a mensagem do commit escrito no editor de texto, substitua a palavra PICK por reword, pressione ESC e digite ':wq'. Em seguida abrirá um editor de texto para modificar a mensagem. Flag -i significa "interactive")
+git rebase -i <hash_Commit>/<tag> (será feito um rebase, portanto abrirá editor de texto com os commits mais recentes ao commit especificado, para alterar a mensagem do commit escrito no editor de texto, substitua a palavra PICK por reword, salve o arquivo e saia digitando :wq. Em seguida abrirá outro texto para modificar a mensagem de commit. -i, --interactive (emite alerta se alguns commits são removidos))
 
 
 //============ Comandos Git Flow ===============//
