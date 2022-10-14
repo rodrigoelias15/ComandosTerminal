@@ -71,7 +71,7 @@ sudo apt update (baixa pacotes atualizados sem instalá-los)
 
 sudo apt upgrade (instala atualizações dos pacotes baixados) ou sudo apt-get upgrade <app> (instala atualizações do pacote especifico)
 
-sudo apt-key add arquivo_chave (adiciona chaves de repositorios que precisam de autenticação (arquivo da chave precisa estar salvo localmente))
+sudo apt-key add arquivo_chave.asc (adiciona chaves de repositorios que precisam de autenticação (arquivo da chave precisa estar salvo localmente))
 
 sudo apt-mark hold <nome_aplicativo> (impede que aplicativo continue sendo atualizado)
 
