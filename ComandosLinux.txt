@@ -59,19 +59,19 @@ apt search nome_aplicativo (busca aplicativo no repositorio remoto, é usado fre
 
 apt depends nome_aplicativo (exibe quais pacotes o aplicativo especificado depende)
 
-sudo add-apt-repository ppa: url_diretorio_pacotes (adiciona repositorios ppa (pesonal package archive)
+sudo apt-add-repository ppa: url_diretorio_pacotes (adiciona repositorios ppa (pesonal package archive)
 
-sudo add-apt-repository --remove ppa: url_diretorio_pacotes (remove repositorios ppa)
+sudo apt-add-repository --remove ppa: url_diretorio_pacotes (remove repositorios ppa)
 
 sudo apt install nome_aplicativo
+
+sudo apt-key add arquivo_chave.asc (adiciona chaves de repositorios que precisam de autenticação (arquivo da chave precisa estar salvo localmente))
 
 sudo apt --fix-broken install (corrige problemas de instalação de pacotes do repositorio do linux, como dependencias desencontradas)
 
 sudo apt update (baixa pacotes atualizados sem instalá-los)
 
 sudo apt upgrade (instala atualizações dos pacotes baixados) ou sudo apt-get upgrade <app> (instala atualizações do pacote especifico)
-
-sudo apt-key add arquivo_chave.asc (adiciona chaves de repositorios que precisam de autenticação (arquivo da chave precisa estar salvo localmente))
 
 sudo apt-mark hold <nome_aplicativo> (impede que aplicativo continue sendo atualizado)
 
@@ -361,7 +361,9 @@ Inodes ou nó-i, são estruturas responsáveis por conter informações básicas
 
 Podemos baixar aplicativos vindos de repositórios de outras distros, que podem ser adicionadas no arquivo /etc/apt/sources.list seguindo o seguinte formato:
 deb http://mxrepo.com/mx/repo/ bullseye main non-free (indicam o tipo de arquivo, URL do repositório, distribuição (distro) e componentes (categorias de aplicativos que serão baixados))
-Para abandonar o repositório, basta apagar o endereço do arquivo
+Outra forma de adicionar um repositorio é usando comando "sudo apt-add-repository url_repositorio", o repositorio sera adicionado no arquivo /etc/apt/sources.list ou um arquivo será criado no diretório /etc/apt/sources.list.d/
+Obs: ao usar este comando acima, instruções do repositório devem ser modificadas com a distribuição e componentes certos no arquivo.
+Para deletar o repositório do sistema, basta apagar o endereço que está no arquivo ou executar o comando "sudo apt-add-repository --remove url_repositorio".
 
 Cores de arquivos/pastas da saida ls (não são padrões em todos os sistemas):
 Verde: arquivo executável
@@ -425,7 +427,7 @@ solution: sudo chmod -R 755 /var (diretorio que deu erro)
 solution: sudo chown root:root /var (diretorio do erro)
 
 * Reparar boot:
-sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-add-repository ppa:yannubuntu/boot-repair
 sudo apt update
 sudo apt install boot-repair
 Abrir Boot Repair e quando processo tiver acabado executar:
