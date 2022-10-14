@@ -59,7 +59,9 @@ apt search nome_aplicativo (busca aplicativo no repositorio remoto, é usado fre
 
 apt depends nome_aplicativo (exibe quais pacotes o aplicativo especificado depende)
 
-sudo add-apt-repository ppa: url_diretorio_pacotes
+sudo add-apt-repository ppa: url_diretorio_pacotes (adiciona repositorios ppa (pesonal package archive)
+
+sudo add-apt-repository --remove ppa: url_diretorio_pacotes (remove repositorios ppa)
 
 sudo apt install nome_aplicativo
 
@@ -67,7 +69,9 @@ sudo apt --fix-broken install (corrige problemas de instalação de pacotes do r
 
 sudo apt update (baixa pacotes atualizados sem instalá-los)
 
-sudo apt-get upgrade (instala atualizações dos pacotes baixados) ou sudo apt-get upgrade <app> (instala atualizações do pacote especifico)
+sudo apt upgrade (instala atualizações dos pacotes baixados) ou sudo apt-get upgrade <app> (instala atualizações do pacote especifico)
+
+sudo apt-key add arquivo_chave (adiciona chaves de repositorios que precisam de autenticação (arquivo da chave precisa estar salvo localmente))
 
 sudo apt-mark hold <nome_aplicativo> (impede que aplicativo continue sendo atualizado)
 
@@ -354,6 +358,10 @@ Para ocultar senha "sudo" do terminal, basta comentar todas as linhas do arquivo
 /etc/group (exibe de maneira detalhada id e informações de grupos, inclusive usuários que fazem parte do grupo)
 
 Inodes ou nó-i, são estruturas responsáveis por conter informações básicas sobre arquivos e pastas, como permissões de acesso, identificação dos donos dos arquivos, data e hora do último acesso e alterações, tamanho e ponteiros para o arquivo em si. Cada arquivo/diretorio no kernel é identificado como um número de nó
+
+Podemos baixar aplicativos vindos de repositórios de outras distros, que podem ser adicionadas no arquivo /etc/apt/sources.list seguindo o seguinte formato:
+deb http://mxrepo.com/mx/repo/ bullseye main non-free (indicam o tipo de arquivo, URL do repositório, distribuição (distro) e componentes (categorias de aplicativos que serão baixados))
+Para abandonar o repositório, basta apagar o endereço do arquivo
 
 Cores de arquivos/pastas da saida ls (não são padrões em todos os sistemas):
 Verde: arquivo executável
