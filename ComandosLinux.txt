@@ -93,12 +93,12 @@ tail nome_arquivo (exibe últimas 10 linhas de um arquivo, para exibir número e
 
 tee nome_arquivo (grava saída de um comando em um ou mais arquivos, exemplo: ls | tee arquivo.txt, saída do comando ls é gravada no arquivo de texto)
 
-sed (aplicativo GNU para edição de textos, os arquivos são editados porém não ficam salvos sem a flag -i). Alguns exemplos:
+sed (aplicativo GNU para edição de textos, para salvar modificações use -i; -i, --in-place=SUFFIX). Alguns exemplos:
 sed -i 's/palavra_para_modificar/nova_palavra/' arquivo_Texto (comando s para substituir primeiras ocorrencias em todas as linhas, e -i para salvar arquivo)
 sed 's/palavra_para_modificar/nova_palavra/g' arquivo_Texto (comando g (--global) para substituir todas as ocorrencias)
 sed '1,3 s/palavra_para_modificar/nova_palavra/' arquivo_Texto (substitui ocorrencias da linha 1 à 3)
-sed 's/^/nova_palavra' arquivo_Texto (adiciona nova expressão no início de cada linha)
-sed 's/$/nova_palavra' arquivo_Texto (adiciona nova expressão no final de cada linha)
+sed 's/^/nova_palavra/' arquivo_Texto (adiciona nova expressão no início de cada linha)
+sed 's/$/nova_palavra/' arquivo_Texto (adiciona nova expressão no final de cada linha)
 
 variavel="conteudo" (sem espaços entre "=" e o conteudo, cria variaveis no terminal como no exemplo: caminho="/home/rodrigo/Downloads"
 Nesse caso a variável $caminho recebe o caminho especificado, mas ela é temporária e só existe localmente no bash, para se transformar em variável local permanente, acesse o arquivo /etc/bash.bashrc ou ~/.bashrc, e digite no fim do arquivo: export caminho="/home/rodrigo/Downloads").
