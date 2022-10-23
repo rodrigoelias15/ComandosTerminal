@@ -238,7 +238,7 @@ unzip nome_arquivo.zip -d diretorio_destino (descompacta arquivos .zip para o di
 
 tar -cvzf novo_arquivo.tar.gz arquivo_para_compactar/diretorio_para_compactar (cria arquivo .tar.gz (-c, --create; -v,--verbose; -z, --gzip, --gunzip, --ungzip; -f, --file=ARCHIVE). Obs: Arquivos desse formato são menores que .zip, porém compatibilidade é limitada aos sistemas Linux)
 
-tar -xvzf nome_arquivo.tar.gz -C diretorio_destino (extrai arquivos .tar ou .tar.gz para diretório escolhido (-x=--extract, --get; -C,--directory=DIR (diretório não é criado como no comando zip, diretório já precisa existir)))
+tar -xvzf nome_arquivo.tar.gz -C diretorio_destino (extrai arquivos com extensão .tar, .tar.xz (os dois sem a opção -z) e .tar.gz para o diretório escolhido (-x=--extract, --get; -C,--directory=DIR (diretório não é criado como no comando zip, diretório já precisa existir)))
 
 zcat nome_arquivo.gz (descompacta arquivos .gz)
 
