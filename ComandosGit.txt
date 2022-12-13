@@ -158,4 +158,4 @@ No modo inserção o texto é selecionado com as teclas direcionais, teclamos "y
 
 //================== Observações ==================//
 
-O Github pede o Token Access ao invés da senha, crie o Token Access no GitHub no menu Settings/Developer Settings e marque todas as opções que contém "repo" em "Select Scopes".
+O Github pede o Token Access ao invés da senha, crie o Token Access no GitHub no menu Settings/Developer Settings e marque todas as opções que contém "repo, workflow e admin:org" (Github API exige essas marcações) em "Select Scopes".
